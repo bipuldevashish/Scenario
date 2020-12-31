@@ -1,7 +1,5 @@
-package com.bipuldevashish.pro_x.ui.home
+package com.bipuldevashish.pro_x.ui.Main
 
-import `in`.gsrathoreniks.wallies.base.util.NetworkHelper
-import `in`.gsrathoreniks.wallies.data.repository.ImageRepository
 import `in`.gsrathoreniks.wallies.ui.main.MainViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

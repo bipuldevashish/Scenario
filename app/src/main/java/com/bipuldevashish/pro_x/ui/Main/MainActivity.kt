@@ -1,4 +1,4 @@
-package com.bipuldevashish.pro_x.ui.home
+package com.bipuldevashish.pro_x.ui.Main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
