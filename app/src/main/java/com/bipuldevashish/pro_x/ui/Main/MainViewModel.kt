@@ -10,7 +10,7 @@ import com.bipuldevashish.pro_x.utils.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class MainViewmodel (
+class MainViewModel (
         val imageRepository: ImageRepository
         ) : ViewModel(){
 

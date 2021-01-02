@@ -9,8 +9,8 @@ class MainViewModelFactory(private val imageRepository: ImageRepository) :
     override fun <T : ViewModel> create(modelClass: Class<T>) =
             with(modelClass) {
                 when {
-                    isAssignableFrom(MainViewmodel::class.java) ->
-                        MainViewmodel(imageRepository = imageRepository)
+                    isAssignableFrom(MainViewModel::class.java) ->
+                        MainViewModel(imageRepository = imageRepository)
                     else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }
             } as T
