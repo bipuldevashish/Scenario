@@ -1,4 +1,4 @@
-package com.bipuldevashish.pro_x.ui.login
+package com.bipuldevashish.pro_x.ui.signup
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.bipuldevashish.pro_x.R
 
-class LoginFragment : Fragment() {
+class Signup : Fragment() {
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.fragment_signup, container, false)
     }
 }
