@@ -51,7 +51,6 @@ class Home : Fragment() {
             }
         })
 
-        setHasOptionsMenu(true)
         return view
     }
 

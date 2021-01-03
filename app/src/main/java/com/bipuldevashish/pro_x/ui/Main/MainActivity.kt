@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.data.local.ImageDatabase
 import com.bipuldevashish.pro_x.data.repository.ImageRepository
+import com.bipuldevashish.pro_x.ui.Main.util.MainViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -24,11 +25,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.elevation ?: 0
 
-        val navView:BottomNavigationView = findViewById(R.id.nav_view)
+        val navView : BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(
                 setOf(
-                        R.id.navigation_home, R.id.navigation_profile
+                        R.id.home, R.id.profile
                 )
         )
 
