@@ -1,4 +1,4 @@
-package com.bipuldevashish.pro_x.ui.Main
+package com.bipuldevashish.pro_x.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.data.local.ImageDatabase
 import com.bipuldevashish.pro_x.data.repository.ImageRepository
-import com.bipuldevashish.pro_x.ui.Main.util.MainViewModelFactory
+import com.bipuldevashish.pro_x.ui.main.util.MainViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

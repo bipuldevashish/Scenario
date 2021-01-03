@@ -16,23 +16,19 @@ class HomeViewModel  (
 
     val imagelist: MutableLiveData<Resource<ImageList>> = MutableLiveData()
     var imagePage = 1
-    var perPageImageCount = 20
+    var perPageImageCount = 80
     private val TAG = "MainViewModel"
-
-
 
     init {
         getImageResults(
                 apiKey = "11962816-c075381f0fbbba991df10a0d8",
-                query = "cars"
+                query = "nature"
         )
     }
 
-
-
-    fun getImageResults(apiKey: String,query: String) = viewModelScope.launch {
+    fun getImageResults(apiKey: String, query : String) = viewModelScope.launch {
         imagelist.postValue(Resource.Loading())
-        val response = imageRepository.getImagesResults(api_key = apiKey,query = query,page = imagePage,per_page = perPageImageCount )
+        val response = imageRepository.getImagesResults(api_key = apiKey, query = query , page = imagePage,per_page = perPageImageCount )
         imagelist.postValue(handlerImageResponse(response))
         Log.d(TAG, "getImageResults: imagelistsize : ${response.body()?.photos?.size}")
     }

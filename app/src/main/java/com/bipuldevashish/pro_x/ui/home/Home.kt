@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bipuldevashish.pro_x.R
-import com.bipuldevashish.pro_x.ui.Main.MainActivity
-import com.bipuldevashish.pro_x.ui.Main.MainViewModel
+import com.bipuldevashish.pro_x.ui.main.MainActivity
+import com.bipuldevashish.pro_x.ui.main.MainViewModel
 import com.bipuldevashish.pro_x.utils.Resource
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
@@ -31,7 +32,7 @@ class Home : Fragment() {
 
         view.recyclerView_images.apply {
             adapter = homeImageAdapter
-            layoutManager = StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
+            layoutManager = GridLayoutManager(context, 3)
         }
 
         viewModel.imageList.observe(viewLifecycleOwner, Observer { response ->
