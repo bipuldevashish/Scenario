@@ -8,19 +8,17 @@ import retrofit2.http.Query
 interface ApiService {
 
 /*
-* getImageResults :  This is a "GET" call with "/api/" endpoint which will be
-* utilised by ApiService. This contains 4 parameters in it's call
+* getImageResults :  This is a "GET" call with "curated/" endpoint which will be
+* utilised by ApiService. This contains 3 parameters in it's call
 *
 * key : API KEY for authentication purpose
-* q : It's basically the search query, (ex. Car wallpapers)
 * page : this is a parameter for getting data by paginated
 * per_page : This defines the number of images we want per API call.
 *
 * */
-    @GET("/api/")
+    @GET("curated/")
     suspend fun getImageResults(
         @Query("key") key: String?,
-        @Query("q") query: String?,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
     ): Response<ImageList>

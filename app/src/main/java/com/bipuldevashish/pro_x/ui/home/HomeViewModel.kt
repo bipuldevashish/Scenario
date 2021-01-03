@@ -16,19 +16,18 @@ class HomeViewModel  (
 
     val imagelist: MutableLiveData<Resource<ImageList>> = MutableLiveData()
     var imagePage = 1
-    var perPageImageCount = 80
+    var perPageImageCount = 20
     private val TAG = "MainViewModel"
 
     init {
         getImageResults(
-                apiKey = "11962816-c075381f0fbbba991df10a0d8",
-                query = "nature"
+                apiKey = "563492ad6f917000010000018bc38c66a1bc4522bbe044d69a19e744"
         )
     }
 
-    fun getImageResults(apiKey: String, query : String) = viewModelScope.launch {
+    fun getImageResults(apiKey: String) = viewModelScope.launch {
         imagelist.postValue(Resource.Loading())
-        val response = imageRepository.getImagesResults(api_key = apiKey, query = query , page = imagePage,per_page = perPageImageCount )
+        val response = imageRepository.getImagesResults(api_key = apiKey, page = imagePage,per_page = perPageImageCount )
         imagelist.postValue(handlerImageResponse(response))
         Log.d(TAG, "getImageResults: imagelistsize : ${response.body()?.photos?.size}")
     }
@@ -37,7 +36,7 @@ class HomeViewModel  (
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
 //                This log is jus to check wether we're getting the correct data or not
-                Log.d(TAG, "getImageResults: ${resultResponse.photos.get(0).pageURL}")
+                Log.d(TAG, "getImageResults: ${resultResponse.photos.get(0).url}")
                 return Resource.Success(resultResponse)
             }
         }

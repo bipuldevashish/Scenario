@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitBuilder {
     companion object {
-        private const val BASE_URL = "https://pixabay.com/"
+        private const val BASE_URL = "https://api.pexels.com/v1/"
 
         private val retrofit by lazy {
             val client = OkHttpClient.Builder()

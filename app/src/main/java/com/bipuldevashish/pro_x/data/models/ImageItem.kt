@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey
 class ImageItem (
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo val id: Long,
-        @ColumnInfo val pageURL: String,
-        @ColumnInfo val largeURL: String,
-        @ColumnInfo val mediumURL: String
+        @ColumnInfo val url: String,
+        @ColumnInfo val large: String,
+        @ColumnInfo val medium: String
         )

@@ -26,7 +26,7 @@ class HomeImageAdapter : RecyclerView.Adapter<HomeImageAdapter.MyViewholder>() {
             val currentItem = imageList[position]
 
             for (item in imageList){
-                Picasso.get().load(currentItem.mediumURL).into(holder.itemView.imgItem)
+                Picasso.get().load(currentItem.medium).into(holder.itemView.imgItem)
             }
     }
 
