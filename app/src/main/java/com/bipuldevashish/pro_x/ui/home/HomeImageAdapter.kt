@@ -6,28 +6,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bipuldevashish.pro_x.R
-import com.bipuldevashish.pro_x.data.models.ImageItem
+import com.bipuldevashish.pro_x.data.models.Photos
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.image_item_rv.view.*
 
 class HomeImageAdapter : RecyclerView.Adapter<HomeImageAdapter.MyViewholder>() {
-    private var imageList = emptyList<ImageItem>()
+    private var imageList = emptyList<Photos>()
     private val TAG = "HomeImageAdapter"
 
-    class MyViewholder (itemView : View) : RecyclerView.ViewHolder(itemView){
+    class MyViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewholder {
-            return MyViewholder(LayoutInflater.from(parent.context).inflate(R.layout.image_item_rv, parent,false))
+        return MyViewholder(LayoutInflater.from(parent.context).inflate(R.layout.image_item_rv, parent, false))
     }
 
     override fun onBindViewHolder(holder: MyViewholder, position: Int) {
-            val currentItem = imageList[position]
-
-            for (item in imageList){
-                Picasso.get().load(currentItem.medium).into(holder.itemView.imgItem)
-            }
+        val currentItem = imageList[position]
+        for (item in imageList) {
+            Log.d(TAG, "onBindViewHolder: current item value : ${currentItem.src.medium}")
+            Picasso.get().load(currentItem.src.medium).into(holder.itemView.imgItem)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -35,8 +35,10 @@ class HomeImageAdapter : RecyclerView.Adapter<HomeImageAdapter.MyViewholder>() {
         return imageList.size
     }
 
-    fun setData(image: List<ImageItem>){
-        this.imageList = image
+    fun setData(image: List<Photos>?) {
+        if (image != null) {
+            this.imageList = image
+        }
         notifyDataSetChanged()
 
     }

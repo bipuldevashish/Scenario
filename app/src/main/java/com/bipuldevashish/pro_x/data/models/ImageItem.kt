@@ -3,6 +3,8 @@ package com.bipuldevashish.pro_x.data.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.JsonObject
+import kotlinx.android.extensions.ContainerOptions
 
 @Entity(
             tableName = "image_table"
@@ -10,8 +12,10 @@ import androidx.room.PrimaryKey
 
 class ImageItem (
         @PrimaryKey(autoGenerate = true)
-        @ColumnInfo val id: Long,
-        @ColumnInfo val url: String,
-        @ColumnInfo val large: String,
-        @ColumnInfo val medium: String
+        @ColumnInfo val id: Int,
+        @ColumnInfo val avg_color : String,
+        @ColumnInfo val liked : Boolean,
+        @ColumnInfo val photographer : String,
+        @ColumnInfo val medium : String,
+        @ColumnInfo val large2x : String
         )

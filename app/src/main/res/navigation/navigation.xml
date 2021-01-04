@@ -52,4 +52,9 @@
             android:id="@+id/action_profile_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/search"
+        android:name="com.bipuldevashish.pro_x.ui.search.Search"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
 </navigation>

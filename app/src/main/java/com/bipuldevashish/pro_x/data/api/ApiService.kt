@@ -3,6 +3,8 @@ package com.bipuldevashish.pro_x.data.api
 import com.bipuldevashish.pro_x.data.models.ImageList
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface ApiService {
@@ -16,9 +18,10 @@ interface ApiService {
 * per_page : This defines the number of images we want per API call.
 *
 * */
+
+    @Headers("Authorization: 563492ad6f917000010000018bc38c66a1bc4522bbe044d69a19e744")
     @GET("curated/")
     suspend fun getImageResults(
-        @Query("key") key: String?,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
     ): Response<ImageList>

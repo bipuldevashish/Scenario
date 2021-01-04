@@ -32,7 +32,7 @@ class Home : Fragment() {
 
         view.recyclerView_images.apply {
             adapter = homeImageAdapter
-            layoutManager = GridLayoutManager(context, 3)
+            layoutManager = GridLayoutManager(context,3)
         }
 
         viewModel.imageList.observe(viewLifecycleOwner, Observer { response ->
@@ -40,7 +40,7 @@ class Home : Fragment() {
                 is Resource.Success -> {
                     response.data?.let { imageResponse ->
                         homeImageAdapter.setData(imageResponse.photos)
-                        Log.d(TAG, "onCreateView: ${imageResponse.photos.size}")
+                        Log.d(TAG, "onCreateView: ${imageResponse.photos?.size}")
                     }
                 }
                 is Resource.Error -> {

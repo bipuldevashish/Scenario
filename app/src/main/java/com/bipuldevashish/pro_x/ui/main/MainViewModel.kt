@@ -16,18 +16,17 @@ class MainViewModel (
 
         val imageList : MutableLiveData<Resource<ImageList>> = MutableLiveData()
         private var imagepage = 1
-        private var perPageImageCount = 20
-        private val TAG = "MAINVIEWMODEL"
+        private var perPageImageCount = 78
+        private val TAG = "MainViewModel"
 
         init {
-                getImageResults(
-                        apiKey = "563492ad6f917000010000018bc38c66a1bc4522bbe044d69a19e744"
-                )
+                getImageResults()
         }
 
-        private fun getImageResults(apiKey: String) = viewModelScope.launch {
+        private fun getImageResults() = viewModelScope.launch {
                 imageList.postValue(Resource.Loading())
-                val response = imageRepository.getImagesResults(api_key = apiKey, page = imagepage, per_page = perPageImageCount)
+                val response = imageRepository.getImagesResults(page = imagepage, per_page = perPageImageCount)
+                Log.d(TAG, "getImageResults: response : ${response.body()}")
                 imageList.postValue(handleImageResponse(response))
                 Log.d(TAG, "getImageResults: imagelist : ${response.body()?.photos?.size}")
         }
@@ -35,7 +34,7 @@ class MainViewModel (
         private fun handleImageResponse(response: Response<ImageList>): Resource<ImageList> {
                 if (response.isSuccessful){
                         response.body()?.let { resultResponse ->
-                               Log.d(TAG, "handleImageResponse: ${resultResponse.photos.get(0).large}")
+                               Log.d(TAG, "handleImageResponse: ${resultResponse}")
                                 return Resource.Success(resultResponse)
                         }
                 }
