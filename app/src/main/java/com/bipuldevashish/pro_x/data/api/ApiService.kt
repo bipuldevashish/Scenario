@@ -26,4 +26,11 @@ interface ApiService {
         @Query("per_page") perPage: Int
     ): Response<ImageList>
 
+    @GET("search/")
+    suspend fun getSearchReasults(
+            @Query("query") query : String,
+            @Query("page") page: Int,
+            @Query("per_page") perPage : Int
+    ): Response<ImageList>
+
 }

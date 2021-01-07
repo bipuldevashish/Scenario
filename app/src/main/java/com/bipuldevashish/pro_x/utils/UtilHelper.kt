@@ -16,4 +16,5 @@ object UtilHelper {
         return pref.getBoolean("activity_executed", true)
     }
 
+
 }
