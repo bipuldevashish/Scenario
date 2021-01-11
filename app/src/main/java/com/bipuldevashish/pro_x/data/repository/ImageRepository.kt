@@ -7,19 +7,26 @@ import com.bipuldevashish.pro_x.data.api.ApiService
 import com.bipuldevashish.pro_x.data.api.RetrofitBuilder
 import com.bipuldevashish.pro_x.data.local.ImageDatabase
 import com.bipuldevashish.pro_x.data.paging.PexelPagingSource
+import javax.inject.Inject
+import javax.inject.Singleton
 
 class ImageRepository(val db : ImageDatabase) {
 
             suspend fun getImagesResults(page : Int, per_page : Int) =
                     RetrofitBuilder.api.getImageResults(page, per_page)
 
-            suspend fun getSearchReasults(apiService: ApiService, query : String) =
-                    Pager(
-                            config = PagingConfig(
-                                    pageSize = 20,
-                                    maxSize = 100,
-                                    enablePlaceholders = false
-                            ),
-                            pagingSourceFactory = { PexelPagingSource(apiService, query)}
-                    ).liveData
+}
+
+@Singleton
+class PexelRepository @Inject constructor(private val apiService: ApiService){
+
+        fun getSearchReasults(query: String)=
+                Pager(
+                        config = PagingConfig(
+                                pageSize = 30,
+                                maxSize = 100,
+                                enablePlaceholders = false
+                        ),
+                        pagingSourceFactory = {PexelPagingSource(apiService, query)}
+                ).liveData
 }

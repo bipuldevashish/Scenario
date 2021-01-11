@@ -12,7 +12,9 @@ import com.bipuldevashish.pro_x.data.local.ImageDatabase
 import com.bipuldevashish.pro_x.data.repository.ImageRepository
 import com.bipuldevashish.pro_x.ui.main.util.MainViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: MainViewModel

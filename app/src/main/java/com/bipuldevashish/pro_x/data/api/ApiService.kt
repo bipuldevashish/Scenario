@@ -26,11 +26,15 @@ interface ApiService {
         @Query("per_page") perPage: Int
     ): Response<ImageList>
 
+    @Headers("Authorization: 563492ad6f917000010000018bc38c66a1bc4522bbe044d69a19e744")
     @GET("search/")
     suspend fun getSearchReasults(
-            @Query("query") query : String,
-            @Query("page") page: Int,
-            @Query("per_page") perPage : Int
+        @Query("query") query: String,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
     ): SearchImageItem
 
+    companion object {
+        private const val BASE_URL = "https://api.pexels.com/v1/"
+    }
 }

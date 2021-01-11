@@ -15,9 +15,9 @@ private const val PEXEL_STARTING_PAGE_INDEX = 1
 class PexelPagingSource (
         private val apiService: ApiService,
         private val query: String
-        ) : PagingSource<Int, PhotoDetails>() {
+        ) : PagingSource<Int, ImageList.Photos>() {
 
-        override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PhotoDetails > {
+        override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ImageList.Photos > {
                 val position = params.key ?: PEXEL_STARTING_PAGE_INDEX
                 return try {
                 val response  = apiService.getSearchReasults(query, position, params.loadSize)

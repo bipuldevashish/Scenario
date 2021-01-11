@@ -29,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/image_item_rv"
+        android:layout_below="@+id/input_layout"
         android:id="@+id/recyclerViewSearchFragment" />
 
         <ProgressBar
@@ -45,13 +46,15 @@
         android:id="@+id/textView_noResults"
         android:layout_above="@id/button_retry"
         android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        tools:visibility="visible"
         android:text="Results could not be loaded"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_retry"
-        android:visibility="gone"
+        android:visibility="invisible"
         android:text="Retry"
         android:layout_centerInParent="true"
         tools:visibility="visible"/>
@@ -61,7 +64,7 @@
         android:layout_height="wrap_content"
         android:text="No Results found for this query"
         android:id="@+id/text_view_empty"
-        android:visibility="gone"
+        android:visibility="invisible"
         tools:visibility="visible"
         android:layout_centerInParent="true"/>
 

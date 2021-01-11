@@ -7,6 +7,6 @@ import kotlinx.android.parcel.Parcelize
 data class SearchImageItem(
 
         @SerializedName("total_results") val total_results : Int = 0,
-        @SerializedName("photos") val photos: List<PhotoDetails> = emptyList(),
+        @SerializedName("photos") val photos: List<ImageList.Photos> = emptyList(),
         val nextPage : Int? = null
     )

@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bipuldevashish.pro_x.R
-import com.bipuldevashish.pro_x.data.models.Photos
+import com.bipuldevashish.pro_x.data.models.ImageList
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.image_item_rv.view.*
 
 class HomeImageAdapter : RecyclerView.Adapter<HomeImageAdapter.MyViewholder>() {
-    private var imageList = emptyList<Photos>()
+    private var imageList = emptyList<ImageList.Photos>()
     private val TAG = "HomeImageAdapter"
 
     class MyViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,7 +35,7 @@ class HomeImageAdapter : RecyclerView.Adapter<HomeImageAdapter.MyViewholder>() {
         return imageList.size
     }
 
-    fun setData(image: List<Photos>?) {
+    fun setData(image: List<ImageList.Photos>?) {
         if (image != null) {
             this.imageList = image
         }
