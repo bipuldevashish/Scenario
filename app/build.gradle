@@ -90,4 +90,15 @@ dependencies {
     // Material design
     implementation 'com.google.android.material:material:1.2.1'
 
+    // Paging source
+    def paging_version = "3.0.0-alpha11"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    // Dagger Hilt
+    def hiltVersion = "2.28-alpha"
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
+
 }

@@ -1,9 +1,9 @@
 package com.bipuldevashish.pro_x.data.api
 
 import com.bipuldevashish.pro_x.data.models.ImageList
+import com.bipuldevashish.pro_x.data.models.SearchImageItem
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.Query
 
@@ -31,6 +31,6 @@ interface ApiService {
             @Query("query") query : String,
             @Query("page") page: Int,
             @Query("per_page") perPage : Int
-    ): Response<ImageList>
+    ): SearchImageItem
 
 }
