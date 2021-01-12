@@ -2,12 +2,8 @@ package com.bipuldevashish.pro_x.data.paging
 
 import androidx.paging.PagingSource
 import com.bipuldevashish.pro_x.data.api.ApiService
-import com.bipuldevashish.pro_x.data.models.ImageItem
 import com.bipuldevashish.pro_x.data.models.ImageList
-import com.bipuldevashish.pro_x.data.models.PhotoDetails
-import com.bipuldevashish.pro_x.data.models.SearchImageItem
 import retrofit2.HttpException
-import retrofit2.Response
 import java.io.IOException
 
 private const val PEXEL_STARTING_PAGE_INDEX = 1
