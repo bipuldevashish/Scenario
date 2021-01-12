@@ -21,6 +21,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/search_here"
                 android:imeOptions="actionSearch"
+                android:text="Cars"
                 android:inputType="textNoSuggestions"
                 android:selectAllOnFocus="true" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -49,21 +50,21 @@
         android:layout_centerHorizontal="true"
         android:visibility="invisible"
         tools:visibility="visible"
-        android:text="Results could not be loaded"/>
+        android:text="@string/results_could_not_be_loaded"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_retry"
         android:visibility="invisible"
-        android:text="Retry"
+        android:text="@string/retry"
         android:layout_centerInParent="true"
         tools:visibility="visible"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No Results found for this query"
+        android:text="@string/no_results_found_for_this_query"
         android:id="@+id/text_view_empty"
         android:visibility="invisible"
         tools:visibility="visible"

@@ -9,4 +9,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue_light">#115173</color>
     <color name="yellow">#ffd700</color>
+    <color name="babyPink">#fe9ea0</color>
+    <color name="lightbabyPink">#fea7a9</color>
+    <color name="aqua">#30aaac</color>
+
+    <color name="pencil">#4A6572</color>
+    <color name="pencilDark">#344955</color>
+    <color name="honey">#F9AA33</color>
+    <color name="pencilComplemtry">#72574a</color>
+    <color name="pencilComplementryDark">#80482E</color>
 </resources>

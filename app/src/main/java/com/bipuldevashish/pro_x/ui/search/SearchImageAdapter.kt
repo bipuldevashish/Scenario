@@ -19,15 +19,16 @@ class SearchImageAdapter :
     class PhotoViewHolder(private val binding: ImageItemRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(photo : ImageList.Photos){
-                binding.apply {
-                    Picasso.get()
-                        .load(photo.src.medium)
-                        .error(R.drawable.ic_round_erro_24)
-                        .into(imgItem)
-                }
+        fun bind(photo: ImageList.Photos) {
+            binding.apply {
+                Picasso.get()
+                    .load(photo.src.medium)
+                    .error(R.drawable.ic_round_erro_24)
+                    .into(imgItem)
             }
         }
+    }
+
 
     companion object {
         private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<ImageList.Photos>() {
@@ -49,7 +50,7 @@ class SearchImageAdapter :
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val currentItem = getItem(position)
         Log.d(TAG, "onBindViewHolder: ${currentItem?.src?.medium}")
-        if (currentItem != null){
+        if (currentItem != null) {
             holder.bind(currentItem)
         }
     }

@@ -1,10 +1,12 @@
 package com.bipuldevashish.pro_x.ui.search
 
+import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bipuldevashish.pro_x.R
@@ -15,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 @AndroidEntryPoint
 class Search : Fragment(R.layout.fragment_search) {
 
-    private val viewModel by viewModels<SearchViewModel> ()
+    private val viewModel by viewModels<SearchViewModel>()
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
@@ -27,14 +29,33 @@ class Search : Fragment(R.layout.fragment_search) {
 
         val searchAdapter = SearchImageAdapter()
 
-        binding.recyclerViewSearchFragment.apply {
-                setHasFixedSize(true)
-                adapter= searchAdapter
-                layoutManager = GridLayoutManager(context,3)
+        binding.editTextSearch.setOnEditorActionListener { v, actionId, event ->
+            return@setOnEditorActionListener when (actionId) {
+                EditorInfo.IME_ACTION_SEARCH -> {
+                    getStringFromEditText()
+                    true
+                }
+                else -> false
+            }
         }
 
-        viewModel.photos.observe(viewLifecycleOwner){
+        binding.recyclerViewSearchFragment.apply {
+            setHasFixedSize(true)
+            adapter = searchAdapter
+            layoutManager = GridLayoutManager(context, 3)
+        }
+
+        viewModel.photos.observe(viewLifecycleOwner) {
             searchAdapter.submitData(viewLifecycleOwner.lifecycle, it)
+        }
+    }
+
+    fun getStringFromEditText() {
+        binding.editTextSearch.text.trim().let {
+            if (it.isNotEmpty()) {
+                binding.recyclerViewSearchFragment.scrollToPosition(0)
+                viewModel.searchPhotos(it.toString())
+            }
         }
     }
 

@@ -6,6 +6,9 @@
     <string name="menu_profile">Profile</string>
     <string name="api_key">563492ad6f917000010000018bc38c66a1bc4522bbe044d69a19e744</string>
     <string name="menu_search">Search</string>
-    <string name="search_here">Search here</string>
+    <string name="search_here">Search By Category</string>
     <string name="no_results">No results 😓</string>
+    <string name="results_could_not_be_loaded">Results could not be loaded</string>
+    <string name="retry">Retry</string>
+    <string name="no_results_found_for_this_query">No Results found for this query</string>
 </resources>
