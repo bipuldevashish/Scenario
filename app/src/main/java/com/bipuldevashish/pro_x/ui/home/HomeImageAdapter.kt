@@ -2,44 +2,79 @@ package com.bipuldevashish.pro_x.ui.home
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.data.models.ImageList
+import com.bipuldevashish.pro_x.databinding.ImageItemRvBinding
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.image_item_rv.view.*
 
-class HomeImageAdapter : RecyclerView.Adapter<HomeImageAdapter.MyViewholder>() {
-    private var imageList = emptyList<ImageList.Photos>()
-    private val TAG = "HomeImageAdapter"
+private const val TAG = "HomeImageAdapter"
 
-    class MyViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class HomeImageAdapter(private val listner: OnitemClickListner) :
+    PagingDataAdapter<ImageList.Photos, HomeImageAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
 
-    }
+    inner class PhotoViewHolder(private val binding: ImageItemRvBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewholder {
-        return MyViewholder(LayoutInflater.from(parent.context).inflate(R.layout.image_item_rv, parent, false))
-    }
+        init {
+            binding.root.setOnClickListener{
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION ){
+                    val item = getItem(position)
+                    if (item != null){
+                        listner.onItemClick(item)
+                    }
+                }
+            }
+        }
 
-    override fun onBindViewHolder(holder: MyViewholder, position: Int) {
-        val currentItem = imageList[position]
-        for (item in imageList) {
-            Log.d(TAG, "onBindViewHolder: current item value : ${currentItem.src.medium}")
-            Picasso.get().load(currentItem.src.medium).into(holder.itemView.imgItem)
+        fun bind(photo: ImageList.Photos) {
+            binding.apply {
+                Picasso.get()
+                    .load(photo.src.medium)
+                    .error(R.drawable.ic_round_erro_24)
+                    .into(imgItem)
+            }
         }
     }
 
-    override fun getItemCount(): Int {
-        Log.d(TAG, "getItemCount: ${imageList.size}")
-        return imageList.size
-    }
 
-    fun setData(image: List<ImageList.Photos>?) {
-        if (image != null) {
-            this.imageList = image
+    companion object {
+        private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<ImageList.Photos>() {
+            override fun areItemsTheSame(
+                oldItem: ImageList.Photos,
+                newItem: ImageList.Photos
+            ) =
+                oldItem.id == newItem.id
+
+            override fun areContentsTheSame(
+                oldItem: ImageList.Photos,
+                newItem: ImageList.Photos
+            ) =
+                oldItem == newItem
+
         }
-        notifyDataSetChanged()
-
     }
+
+    override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
+        val currentItem = getItem(position)
+        Log.d(TAG, "onBindViewHolder: ${currentItem?.src?.medium}")
+        if (currentItem != null) {
+            holder.bind(currentItem)
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
+        val binding = ImageItemRvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return PhotoViewHolder(binding)
+    }
+
+    interface OnitemClickListner {
+        fun onItemClick(photo: ImageList.Photos)
+    }
+
 }

@@ -11,17 +11,8 @@
         android:label="Home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_home_to_wallpaperView"
-            app:destination="@id/wallpaperView" />
-    </fragment>
-    <fragment
-        android:id="@+id/wallpaperView"
-        android:name="com.bipuldevashish.pro_x.ui.home.fullscreen.Fullscreen_Image"
-        android:label="fragment_wallpaper_view"
-        tools:layout="@layout/fragment_fullscreen_image">
-        <action
-            android:id="@+id/action_wallpaperView_to_home"
-            app:destination="@id/home" />
+            android:id="@+id/action_home_to_singleImageFragment"
+            app:destination="@id/singleImageFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -63,11 +54,17 @@
     </fragment>
     <fragment
         android:id="@+id/singleImageFragment"
-        android:name="com.bipuldevashish.pro_x.ui.search.fullScreenImage.DetailedImageFragment"
+        android:name="com.bipuldevashish.pro_x.ui.fullScreenImage.DetailedImageFragment"
         android:label="fragment_single_image"
-        tools:layout="@layout/fragment_single_image">
+        tools:layout="@layout/fragment_detailed_image">
         <argument
             android:name="photo"
             app:argType="com.bipuldevashish.pro_x.data.models.ImageList$Photos" />
+        <action
+            android:id="@+id/action_singleImageFragment_to_search2"
+            app:destination="@id/search" />
+        <action
+            android:id="@+id/action_singleImageFragment_to_home"
+            app:destination="@id/home" />
     </fragment>
 </navigation>

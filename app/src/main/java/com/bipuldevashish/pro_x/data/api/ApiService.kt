@@ -9,6 +9,9 @@ import retrofit2.http.Query
 
 interface ApiService {
 
+    companion object {
+        const val BASE_URL = "https://api.pexels.com/v1/"
+    }
 /*
 * getImageResults :  This is a "GET" call with "curated/" endpoint which will be
 * utilised by ApiService. This contains 3 parameters in it's call
@@ -24,7 +27,7 @@ interface ApiService {
     suspend fun getImageResults(
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
-    ): Response<ImageList>
+    ): SearchImageItem
 
     @Headers("Authorization: 563492ad6f917000010000018bc38c66a1bc4522bbe044d69a19e744")
     @GET("search/")
@@ -34,7 +37,4 @@ interface ApiService {
         @Query("per_page") perPage: Int
     ): SearchImageItem
 
-    companion object {
-        private const val BASE_URL = "https://api.pexels.com/v1/"
-    }
 }

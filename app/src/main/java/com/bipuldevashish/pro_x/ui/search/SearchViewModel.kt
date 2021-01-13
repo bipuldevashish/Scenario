@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.bipuldevashish.pro_x.data.repository.ImageRepository
 import com.bipuldevashish.pro_x.data.repository.PexelRepository
 
 class SearchViewModel @ViewModelInject constructor(

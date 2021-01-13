@@ -1,58 +1,52 @@
 package com.bipuldevashish.pro_x.ui.home
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bipuldevashish.pro_x.R
-import com.bipuldevashish.pro_x.ui.main.MainActivity
-import com.bipuldevashish.pro_x.ui.main.MainViewModel
-import com.bipuldevashish.pro_x.utils.Resource
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import com.bipuldevashish.pro_x.data.models.ImageList
+import com.bipuldevashish.pro_x.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.fragment_home),HomeImageAdapter.OnitemClickListner {
 
-    lateinit var viewModel: MainViewModel
-    lateinit var homeImageAdapter: HomeImageAdapter
+    private var viewModel: HomeViewModel? = null
 
-    private val TAG = "HomeFragment"
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        viewModel = (activity as MainActivity).viewModel
-        homeImageAdapter = HomeImageAdapter()
+        _binding = FragmentHomeBinding.bind(view)
 
-        view.recyclerView_images.apply {
+        val homeImageAdapter = HomeImageAdapter(this)
+
+
+        binding.recyclerViewImages.apply {
+            setHasFixedSize(true)
             adapter = homeImageAdapter
-            layoutManager = GridLayoutManager(context,3)
+            layoutManager = GridLayoutManager(context, 3)
         }
 
-        viewModel.imageList.observe(viewLifecycleOwner, Observer { response ->
-            when (response) {
-                is Resource.Success -> {
-                    response.data?.let { imageResponse ->
-                        homeImageAdapter.setData(imageResponse.photos)
-                        Log.d(TAG, "onCreateView: ${imageResponse.photos?.size}")
-                    }
-                }
-                is Resource.Error -> {
-                    Log.d(TAG, "onCreateView: ${response.message}")
-                }
-                is Resource.Loading -> {
-                    // for handling the loading state
-                }
-            }
-        })
+        viewModel = ViewModelProviders.of(requireActivity()).get(HomeViewModel::class.java)
+        viewModel!!.photos.observe(viewLifecycleOwner) {
+            homeImageAdapter.submitData(viewLifecycleOwner.lifecycle, it)
+        }
+    }
 
-        return view
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+    override fun onItemClick(photo: ImageList.Photos) {
+//        val action = HomeFragmentDirections.actionHomeToWallpaperView(photo)
+//        findNavController().navigate(action)
     }
 
 }

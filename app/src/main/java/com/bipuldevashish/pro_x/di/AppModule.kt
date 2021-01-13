@@ -1,7 +1,6 @@
 package com.bipuldevashish.pro_x.di
 
 import com.bipuldevashish.pro_x.data.api.ApiService
-import com.bipuldevashish.pro_x.data.api.RetrofitBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +17,7 @@ object AppModule {
     @Singleton
     fun providesRetrofit() : Retrofit =
         Retrofit.Builder()
-            .baseUrl(RetrofitBuilder.BASE_URL)
+            .baseUrl(ApiService.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
