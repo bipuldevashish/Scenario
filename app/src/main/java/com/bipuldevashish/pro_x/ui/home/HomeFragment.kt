@@ -16,7 +16,7 @@ import com.bipuldevashish.pro_x.ui.main.MainViewModel
 import com.bipuldevashish.pro_x.utils.Resource
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
-class Home : Fragment() {
+class HomeFragment : Fragment() {
 
     lateinit var viewModel: MainViewModel
     lateinit var homeImageAdapter: HomeImageAdapter

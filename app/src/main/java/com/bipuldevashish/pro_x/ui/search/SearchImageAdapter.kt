@@ -3,6 +3,7 @@ package com.bipuldevashish.pro_x.ui.search
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -13,11 +14,23 @@ import com.squareup.picasso.Picasso
 
 private const val TAG = "SearchImageAdapter"
 
-class SearchImageAdapter :
+class SearchImageAdapter(private val listner: OnitemClickListner) :
     PagingDataAdapter<ImageList.Photos, SearchImageAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
 
-    class PhotoViewHolder(private val binding: ImageItemRvBinding) :
+    inner class PhotoViewHolder(private val binding: ImageItemRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+                binding.root.setOnClickListener{
+                    val position = bindingAdapterPosition
+                    if (position != RecyclerView.NO_POSITION ){
+                            val item = getItem(position)
+                            if (item != null){
+                                listner.onItemClick(item)
+                            }
+                    }
+                }
+        }
 
         fun bind(photo: ImageList.Photos) {
             binding.apply {
@@ -29,6 +42,9 @@ class SearchImageAdapter :
         }
     }
 
+    interface OnitemClickListner {
+        fun onItemClick(photo: ImageList.Photos)
+    }
 
     companion object {
         private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<ImageList.Photos>() {
@@ -60,3 +76,6 @@ class SearchImageAdapter :
         return PhotoViewHolder(binding)
     }
 }
+
+
+

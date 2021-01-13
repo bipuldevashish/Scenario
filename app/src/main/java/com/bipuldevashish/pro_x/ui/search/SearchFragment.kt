@@ -8,14 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bipuldevashish.pro_x.R
+import com.bipuldevashish.pro_x.data.models.ImageList
 import com.bipuldevashish.pro_x.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_search.*
 
 @AndroidEntryPoint
-class Search : Fragment(R.layout.fragment_search) {
+class SearchFragment : Fragment(R.layout.fragment_search), SearchImageAdapter.OnitemClickListner {
 
     private val viewModel by viewModels<SearchViewModel>()
 
@@ -27,7 +29,7 @@ class Search : Fragment(R.layout.fragment_search) {
 
         _binding = FragmentSearchBinding.bind(view)
 
-        val searchAdapter = SearchImageAdapter()
+        val searchAdapter = SearchImageAdapter(this)
 
         binding.editTextSearch.setOnEditorActionListener { v, actionId, event ->
             return@setOnEditorActionListener when (actionId) {
@@ -62,5 +64,10 @@ class Search : Fragment(R.layout.fragment_search) {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onItemClick(photo: ImageList.Photos) {
+            val action = SearchFragmentDirections.actionSearchToSingleImageFragment3(photo)
+            findNavController().navigate(action)
     }
 }

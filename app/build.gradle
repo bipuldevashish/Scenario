@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -105,5 +106,8 @@ dependencies {
     def hiltAndroidXVersion = "1.0.0-alpha01"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
     kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
 
 }
