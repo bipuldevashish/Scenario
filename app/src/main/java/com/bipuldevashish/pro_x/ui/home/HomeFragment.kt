@@ -45,8 +45,8 @@ class HomeFragment : Fragment(R.layout.fragment_home),HomeImageAdapter.OnitemCli
     }
 
     override fun onItemClick(photo: ImageList.Photos) {
-//        val action = HomeFragmentDirections.actionHomeToWallpaperView(photo)
-//        findNavController().navigate(action)
+        val action = HomeFragmentDirections.actionHomeToSingleImageFragment(photo)
+        findNavController().navigate(action)
     }
 
 }
