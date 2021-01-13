@@ -55,7 +55,7 @@
     <fragment
         android:id="@+id/singleImageFragment"
         android:name="com.bipuldevashish.pro_x.ui.fullScreenImage.DetailedImageFragment"
-        android:label="fragment_single_image"
+        android:label="Photo"
         tools:layout="@layout/fragment_detailed_image">
         <argument
             android:name="photo"

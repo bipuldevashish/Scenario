@@ -17,14 +17,14 @@ class MainActivity : AppCompatActivity() {
 
     private val TAG = "HomeActivity"
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.elevation ?: 0
 
-        val navView : BottomNavigationView = findViewById(R.id.nav_view)
+
         val navController = findNavController(R.id.nav_host_fragment)
+        val navView : BottomNavigationView = findViewById(R.id.nav_view)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.home, R.id.search, R.id.profile
@@ -34,5 +34,10 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
