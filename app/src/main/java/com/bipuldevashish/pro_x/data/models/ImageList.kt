@@ -25,6 +25,8 @@ data class ImageList(
     data class Photos(
         @SerializedName("id")
         val id: Int,
+        val width: Int,
+        val height: Int,
         val photographer: String,
         val avg_color: String,
         val liked: Boolean,

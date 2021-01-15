@@ -2,7 +2,7 @@ package com.bipuldevashish.pro_x.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
+import android.content.res.Resources
 import android.widget.Toast
 
 
@@ -16,5 +16,11 @@ object UtilHelper {
         return pref.getBoolean("activity_executed", true)
     }
 
+    fun getScreenWidth(): Int {
+        return Resources.getSystem().getDisplayMetrics().widthPixels
+    }
 
+    fun getScreenHeight(): Int {
+        return Resources.getSystem().getDisplayMetrics().heightPixels
+    }
 }

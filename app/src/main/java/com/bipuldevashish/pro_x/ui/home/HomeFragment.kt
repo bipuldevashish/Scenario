@@ -2,6 +2,7 @@ package com.bipuldevashish.pro_x.ui.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProviders
@@ -20,6 +21,9 @@ class HomeFragment : Fragment(R.layout.fragment_home),HomeImageAdapter.OnitemCli
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
 
         _binding = FragmentHomeBinding.bind(view)
 
