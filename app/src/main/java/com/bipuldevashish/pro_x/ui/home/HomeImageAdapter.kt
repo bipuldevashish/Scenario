@@ -10,7 +10,6 @@ import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.data.models.ImageList
 import com.bipuldevashish.pro_x.databinding.ImageItemRvBinding
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.image_item_rv.view.*
 
 private const val TAG = "HomeImageAdapter"
 
