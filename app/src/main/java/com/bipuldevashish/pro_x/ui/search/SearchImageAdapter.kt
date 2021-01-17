@@ -3,14 +3,14 @@ package com.bipuldevashish.pro_x.ui.search
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.data.models.ImageList
 import com.bipuldevashish.pro_x.databinding.ImageItemRvBinding
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 private const val TAG = "SearchImageAdapter"
 
@@ -34,10 +34,14 @@ class SearchImageAdapter(private val listner: OnitemClickListner) :
 
         fun bind(photo: ImageList.Photos) {
             binding.apply {
-                Picasso.get()
-                    .load(photo.src.medium)
-                    .error(R.drawable.ic_round_erro_24)
-                    .into(imgItem)
+
+                Glide.with(itemView)
+                        .load(photo.src.medium)
+                        .centerCrop()
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .error(R.drawable.ic_round_erro_24)
+                        .into(imgItem)
+
             }
         }
     }

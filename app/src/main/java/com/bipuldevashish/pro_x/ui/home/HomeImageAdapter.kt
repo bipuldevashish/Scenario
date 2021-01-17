@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.data.models.ImageList
 import com.bipuldevashish.pro_x.databinding.ImageItemRvBinding
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.image_item_rv.view.*
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 private const val TAG = "HomeImageAdapter"
 
@@ -34,10 +34,12 @@ class HomeImageAdapter(private val listner: OnitemClickListner) :
 
         fun bind(photo: ImageList.Photos) {
             binding.apply {
-                Picasso.get()
-                    .load(photo.src.medium)
-                    .error(R.drawable.ic_round_erro_24)
-                    .into(imgItem)
+                Glide.with(itemView)
+                        .load(photo.src.medium)
+                        .centerCrop()
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .error(R.drawable.ic_round_erro_24)
+                        .into(imgItem)
             }
         }
     }

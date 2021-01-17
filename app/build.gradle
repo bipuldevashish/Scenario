@@ -89,8 +89,6 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
-    // Picasso
-    implementation 'com.squareup.picasso:picasso:2.71828'
 
     // Material design
     implementation 'com.google.android.material:material:1.2.1'
