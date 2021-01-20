@@ -11,4 +11,9 @@
     <string name="results_could_not_be_loaded">Results could not be loaded</string>
     <string name="retry">Retry</string>
     <string name="no_results_found_for_this_query">No Results found for this query</string>
+    <string name="uploads">Uploads</string>
+    <string name="collection">Collection</string>
+    <string name="favourites">Favourites</string>
+    <string name="upload">Upload</string>
+
 </resources>

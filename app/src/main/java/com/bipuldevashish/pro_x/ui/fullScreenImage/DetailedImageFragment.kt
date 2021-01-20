@@ -64,6 +64,7 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
                     ): Boolean {
                         progressBar.isVisible = false
                         return false
+
                     }
 
                 })

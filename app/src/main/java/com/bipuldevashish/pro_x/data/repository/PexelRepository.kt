@@ -4,7 +4,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
 import com.bipuldevashish.pro_x.data.api.ApiService
-import com.bipuldevashish.pro_x.data.local.ImageDatabase
 import com.bipuldevashish.pro_x.data.paging.PagingSourceCurated
 import com.bipuldevashish.pro_x.data.paging.PexelPagingSource
 import javax.inject.Inject

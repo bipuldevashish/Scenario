@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/search_here"
                 android:imeOptions="actionSearch"
-                android:text="Cars"
+                android:text="Trees"
                 android:inputType="textNoSuggestions"
                 android:selectAllOnFocus="true" />
         </com.google.android.material.textfield.TextInputLayout>

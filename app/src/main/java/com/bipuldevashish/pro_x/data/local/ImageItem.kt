@@ -1,4 +1,4 @@
-package com.bipuldevashish.pro_x.data.models
+package com.bipuldevashish.pro_x.data.local
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -10,7 +10,7 @@ import kotlinx.android.extensions.ContainerOptions
             tableName = "image_table"
 )
 
-class ImageItem (
+data class ImageItem (
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo val id: Int,
         @ColumnInfo val avg_color : String,

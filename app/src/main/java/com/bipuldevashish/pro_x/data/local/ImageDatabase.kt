@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.bipuldevashish.pro_x.data.models.ImageItem
 
 @Database(entities = [ImageItem::class], version = 1, exportSchema = false)
 
