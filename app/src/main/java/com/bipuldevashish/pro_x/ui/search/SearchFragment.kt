@@ -1,12 +1,10 @@
 package com.bipuldevashish.pro_x.ui.search
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,6 +24,9 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchImageAdapter.On
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
 
         _binding = FragmentSearchBinding.bind(view)
 
