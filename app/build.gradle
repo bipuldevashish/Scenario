@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -54,6 +55,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:26.3.0')
+    implementation 'com.google.firebase:firebase-auth:20.0.2'
 
     //    Provide lazy delegate of the activity/fragment by "by viewModels"
     implementation 'androidx.activity:activity-ktx:1.1.0'

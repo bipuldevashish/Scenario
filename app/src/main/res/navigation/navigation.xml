@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_loginFragment_to_signup"
             app:destination="@id/signup" />
+        <action
+            android:id="@+id/action_loginFragment_to_getStartedFragment"
+            app:destination="@id/getStartedFragment" />
     </fragment>
     <fragment
         android:id="@+id/signup"
@@ -33,6 +36,9 @@
         <action
             android:id="@+id/action_signup_to_profile"
             app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_signup_to_getStartedFragment"
+            app:destination="@id/getStartedFragment" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -65,6 +71,21 @@
             app:destination="@id/search" />
         <action
             android:id="@+id/action_singleImageFragment_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/getStartedFragment"
+        android:name="com.bipuldevashish.pro_x.GetStartedFragment"
+        android:label="fragment_get_started"
+        tools:layout="@layout/fragment_get_started" >
+        <action
+            android:id="@+id/action_getStartedFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_getStartedFragment_to_signup"
+            app:destination="@id/signup" />
+        <action
+            android:id="@+id/action_getStartedFragment_to_home"
             app:destination="@id/home" />
     </fragment>
 </navigation>
