@@ -15,20 +15,6 @@
             app:destination="@id/singleImageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.bipuldevashish.pro_x.ui.login.LoginFragment"
-        android:label="Login">
-        <action
-            android:id="@+id/action_loginFragment_to_profile"
-            app:destination="@id/profile" />
-        <action
-            android:id="@+id/action_loginFragment_to_signup"
-            app:destination="@id/signup" />
-        <action
-            android:id="@+id/action_loginFragment_to_getStartedFragment"
-            app:destination="@id/getStartedFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/signup"
         android:name="com.bipuldevashish.pro_x.ui.signup.Signup"
         android:label="Signup"
@@ -36,15 +22,15 @@
         <action
             android:id="@+id/action_signup_to_profile"
             app:destination="@id/profile" />
-        <action
-            android:id="@+id/action_signup_to_getStartedFragment"
-            app:destination="@id/getStartedFragment" />
     </fragment>
     <fragment
         android:id="@+id/profile"
         android:name="com.bipuldevashish.pro_x.ui.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_signup"
+            app:destination="@id/signup" />
         <action
             android:id="@+id/action_profile_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -72,20 +58,20 @@
         <action
             android:id="@+id/action_singleImageFragment_to_home"
             app:destination="@id/home" />
+        <action
+            android:id="@+id/action_singleImageFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/getStartedFragment"
-        android:name="com.bipuldevashish.pro_x.GetStartedFragment"
-        android:label="fragment_get_started"
-        tools:layout="@layout/fragment_get_started" >
+        android:id="@+id/loginFragment"
+        android:name="com.bipuldevashish.pro_x.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_getStartedFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_loginFragment_to_profile"
+            app:destination="@id/profile" />
         <action
-            android:id="@+id/action_getStartedFragment_to_signup"
-            app:destination="@id/signup" />
-        <action
-            android:id="@+id/action_getStartedFragment_to_home"
-            app:destination="@id/home" />
+            android:id="@+id/action_loginFragment_to_singleImageFragment"
+            app:destination="@id/singleImageFragment" />
     </fragment>
 </navigation>
