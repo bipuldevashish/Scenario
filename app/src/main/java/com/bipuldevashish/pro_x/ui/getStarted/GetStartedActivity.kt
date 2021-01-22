@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.databinding.ActivityGetStartedBinding
-import com.bipuldevashish.pro_x.databinding.FragmentHomeBinding
 
 class GetStartedActivity : AppCompatActivity() {
 

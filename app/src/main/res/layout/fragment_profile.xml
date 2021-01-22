@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/gradEnd"
+            android:background="@color/white"
             android:gravity="center"
             android:paddingBottom="5dp"
             android:paddingTop="5dp">
@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="453K"
-                    android:textColor="@color/white"
+                    android:textColor="@color/pencil"
                     android:textSize="25sp" />
 
                 <TextView
@@ -108,7 +108,7 @@
                     android:fontFamily="sans-serif-light"
                     android:text="Downloads"
                     android:textAllCaps="true"
-                    android:textColor="@color/white"
+                    android:textColor="@color/pencil"
                     android:textSize="13sp" />
 
             </LinearLayout>

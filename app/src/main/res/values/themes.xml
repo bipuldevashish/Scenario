@@ -28,4 +28,18 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:windowBackground">@drawable/background</item>
+        <item name="colorPrimary">@color/pencil</item>
+        <item name="colorPrimaryVariant">@color/pencilDark</item>
+        <item name="colorOnPrimary">@color/honey</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/pencilComplemtry</item>
+        <item name="colorSecondaryVariant">@color/pencilComplementryDark</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
 </resources>

@@ -5,143 +5,141 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    tools:context=".ui.signup.Signup">
+    tools:context=".ui.signup.SignUpFragment">
 
-
-
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageBackground"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:id="@+id/action_bar">
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="@string/get_onboard"
-            android:textColor="@color/pencil"
-            android:textSize="18sp" />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:contentDescription="@string/background_image_of_the_fragment"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/action_bar"
-        android:layout_width="match_parent"
+        android:id="@+id/loginToYourText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register"
-        android:fontFamily="@font/montserrat_bold"
-        android:textColor="@color/pencil"
-        android:gravity="center"
-        android:layout_below="@+id/action_bar"
-        android:layout_marginTop="30dp"
-        android:id="@+id/loginText"
-        android:textSize="20sp"/>
+        android:layout_marginBottom="35dp"
+        android:fontFamily="@font/open_sans_regular"
+        android:text="@string/create_n_your_account"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/etNameRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.237"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/registerScroll"
-        android:layout_below="@id/loginText">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etNameRegister"
+        android:layout_width="298dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/edit_text_curve"
+        android:fontFamily="@font/open_sans_regular"
+        android:hint="@string/full_name"
+        android:inputType="text"
+        android:paddingStart="23dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/etEmailRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/registerForm"
-            android:orientation="vertical"
-            android:gravity="center">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etEmailRegister"
+        android:layout_width="298dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/edit_text_curve"
+        android:fontFamily="@font/open_sans_regular"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="23dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/etPasswordRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etPasswordRegister"
+        android:layout_width="298dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/edit_text_curve"
+        android:fontFamily="@font/open_sans_regular"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:paddingStart="23dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/etConfirmPasswordRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent" />
 
-                <EditText
-                    android:id="@+id/etName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:hint="@string/enterName"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:hint="@string/email"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/etMobile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    android:hint="@string/mobile_number"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:hint="@string/password"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/etCpassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:hint="@string/confirm_password"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etConfirmPasswordRegister"
+        android:layout_width="298dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/edit_text_curve"
+        android:fontFamily="@font/open_sans_regular"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:paddingStart="23dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/signupBtnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/signupBtnRegister"
+        android:layout_width="234dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/button_login_shape"
+        android:fontFamily="@font/open_sans_regular"
+        android:text="Sign up"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearlayoutAlreadyHaveaccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearlayoutAlreadyHaveaccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:layout_marginBottom="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="16dp"
-        android:text="@string/register"
-        android:id="@+id/registerBtn"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:background="@color/pencil"
-        android:layout_alignParentBottom="true"/>
+        app:layout_constraintVertical_bias="0.0">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="@string/already_have_an_account" />
+
+    <TextView
+        android:id="@+id/noAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+        android:text="Login"
+        android:textColor="@color/pencil" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,7 @@
     <string name="password">Password</string>
     <string name="forgot_password">forgot password?</string>
     <string name="no_account">No Account?</string>
-    <string name="register_with_us">Register With Us</string>
+    <string name="register_with_us">Register With Us!</string>
     <string name="get_onboard">Get Onboard</string>
     <string name="register">Sign Up</string>
     <string name="enterName">Name</string>
@@ -36,6 +36,11 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="background_image_of_the_fragment">Background image of the fragment</string>
     <string name="text">Let\'s travel through pictures, BUCKLE UP!</string>
+    <string name="login_to_n_your_account">Login to\nyour account</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="create_n_your_account">Create \n your account</string>
+    <string name="full_name">Full Name</string>
+    <string name="already_have_an_account">Already have an account?</string>
 
     //Register Fragment
 

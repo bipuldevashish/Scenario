@@ -36,8 +36,8 @@
 
     <ImageView
         android:id="@+id/line"
-        android:layout_width="145dp"
-        android:layout_height="8dp"
+        android:layout_width="140dp"
+        android:layout_height="5dp"
         android:layout_marginTop="6dp"
         android:src="@drawable/line"
         app:layout_constraintBottom_toBottomOf="parent"
