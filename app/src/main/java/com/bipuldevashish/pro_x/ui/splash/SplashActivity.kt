@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.bipuldevashish.pro_x.GetStartedFragment
 import com.bipuldevashish.pro_x.ui.getStarted.GetStartedActivity
 import com.bipuldevashish.pro_x.utils.Authentication.isUserAuthenticated
 import com.bipuldevashish.pro_x.ui.main.MainActivity

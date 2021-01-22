@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/getting_started"
-    app:startDestination="@id/loginFragment2">
+    app:startDestination="@id/getStartedFragment">
 
     <fragment
         android:id="@+id/loginFragment2"
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/getStartedFragment"
-        android:name="com.bipuldevashish.pro_x.GetStartedFragment"
+        android:name="com.bipuldevashish.pro_x.ui.getStartedFragment.GetStartedFragment"
         android:label="fragment_get_started"
         tools:layout="@layout/fragment_get_started" >
         <action
