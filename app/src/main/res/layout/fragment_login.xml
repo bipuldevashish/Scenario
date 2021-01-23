@@ -24,19 +24,18 @@
         android:id="@+id/loginToYourText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="30dp"
         android:fontFamily="@font/open_sans_regular"
         android:text="@string/login_to_n_your_account"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/etEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.237"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="@+id/guideline10" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etEmail"
-        android:layout_width="298dp"
+        android:layout_width="0dp"
         android:layout_height="54dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/edit_text_curve"
@@ -46,13 +45,13 @@
         android:paddingLeft="23dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="@+id/guideline10" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etPassword"
-        android:layout_width="298dp"
+        android:layout_width="0dp"
         android:layout_height="54dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/edit_text_curve"
@@ -62,9 +61,9 @@
         android:paddingLeft="23dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/forgotPassword"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/guideline10" />
 
 
     <TextView
@@ -79,38 +78,36 @@
         app:layout_constraintBottom_toTopOf="@+id/loginBtn"
         app:layout_constraintEnd_toEndOf="@+id/imageBackground"
         app:layout_constraintHorizontal_bias="0.759"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <Button
         android:id="@+id/loginBtn"
-        android:layout_width="234dp"
+        android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/button_login_shape"
         android:fontFamily="@font/open_sans_regular"
-        android:text="LOGIN"
+        android:text="@string/login_btn"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/linearlayoutNoaccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline13" />
 
     <LinearLayout
         android:id="@+id/linearlayoutNoaccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="120dp"
-        android:gravity="center"
         android:clickable="true"
+        android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/imageBackground"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintRight_toRightOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -127,4 +124,40 @@
             android:textColor="@color/pencil" />
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.84" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.88" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.78" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.21" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

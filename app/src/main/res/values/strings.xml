@@ -22,7 +22,6 @@
 
     //login fragment
     <string name="appname">SCENARIO</string>
-    <string name="welcome">Welcome To,</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -36,13 +35,15 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="background_image_of_the_fragment">Background image of the fragment</string>
     <string name="text">Let\'s travel through pictures, BUCKLE UP!</string>
-    <string name="login_to_n_your_account">Login to\nyour account</string>
+    <string name="login_to_n_your_account">Login to\nYour account</string>
     <string name="forget_password">Forget Password?</string>
-    <string name="create_n_your_account">Create \n your account</string>
-    <string name="full_name">Full Name</string>
-    <string name="already_have_an_account">Already have an account?</string>
+
 
     //Register Fragment
-
+    <string name="create_n_your_account">Create\nYour account</string>
+    <string name="full_name">Full Name</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="signup">SignUP</string>
+    <string name="login_btn">LOGIN</string>
 
 </resources>
