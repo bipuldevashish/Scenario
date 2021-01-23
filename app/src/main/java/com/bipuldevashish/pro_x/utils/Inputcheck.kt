@@ -7,6 +7,8 @@ import android.widget.EditText
 object Inputcheck {
 
     private const val TAG = "Inputcheck"
+
+
     fun isNullOrEmpty(et: EditText): Boolean {
         return if (et.text.toString().isEmpty()) {
             et.error = "Field Required"
@@ -30,8 +32,17 @@ object Inputcheck {
                     et.error = "Please Enter a valid Email"
                     et.requestFocus()
                     false
-                }else true
+                } else true
             }
         }
+    }
+
+    fun areFieldsEqual(et_password: EditText, et_confirmPassword: EditText): Boolean {
+        if ((et_password.text.toString() != et_confirmPassword.text.toString())) {
+            et_confirmPassword.error = "Confirm password should be same"
+            et_confirmPassword.requestFocus()
+            return false
+        }
+        return true
     }
 }

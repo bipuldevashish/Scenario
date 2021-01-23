@@ -12,10 +12,12 @@ import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.databinding.FragmentSignupBinding
 import com.bipuldevashish.pro_x.ui.main.MainActivity
 import com.bipuldevashish.pro_x.utils.InputTypeEnum
+import com.bipuldevashish.pro_x.utils.Inputcheck.areFieldsEqual
 import com.bipuldevashish.pro_x.utils.Inputcheck.isNullOrEmpty
 import com.bipuldevashish.pro_x.utils.Inputcheck.isPatternMatched
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_signup.*
 
 
@@ -56,8 +58,7 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
                 etEmailRegister
             ) && isNullOrEmpty(etPasswordRegister) &&  isNullOrEmpty(
                 etConfirmPasswordRegister
-            ) && (etConfirmPasswordRegister.text.toString()) == etPasswordRegister.text.toString()
-        ) {
+            ) && areFieldsEqual(etPasswordRegister, etConfirmPasswordRegister)) {
             Log.d(TAG, "inputCheck: condition passed")
             return true
         }
@@ -81,6 +82,7 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
                     startActivity(intent)
                     val user = mAuth?.currentUser
                     updateUI(user)
+                    activity?.finish()
 
                 } else {
                     // If sign in fails, display a message to the user.

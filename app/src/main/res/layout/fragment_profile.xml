@@ -29,7 +29,8 @@
                 android:background="@drawable/circle"
                 android:padding="3dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_user" />
+                android:src="@drawable/ic_user"
+                android:contentDescription="@string/displays_user_image" />
 
         </RelativeLayout>
 
@@ -41,7 +42,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15sp"
             android:fontFamily="sans-serif-light"
-            android:text="Joey Tribbiani"
+            android:text="@string/unknown_user"
             android:textColor="@color/white"
             android:textSize="32sp" />
 
@@ -61,13 +62,17 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
             android:adjustViewBounds="true"
+            android:id="@+id/settingsMenu"
+            android:onClick="showPopup"
             android:scaleType="centerInside"
             android:clickable="true"
-            android:src="@drawable/ic_settings" />
+            android:src="@drawable/ic_settings"
+            android:focusable="true"
+            android:contentDescription="@string/inflates_the_menu_item" />
 
     </RelativeLayout>
 
@@ -76,7 +81,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rellay1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -98,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="453K"
+                    android:text="@string/_453k"
                     android:textColor="@color/pencil"
                     android:textSize="25sp" />
 
@@ -106,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="Downloads"
+                    android:text="@string/downloads"
                     android:textAllCaps="true"
                     android:textColor="@color/pencil"
                     android:textSize="13sp" />
@@ -135,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="873"
+                    android:text="@string/_873"
                     android:textColor="@color/white"
                     android:textSize="25sp" />
 
@@ -143,7 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="likes"
+                    android:text="@string/likes"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="13sp" />
@@ -177,7 +183,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email"
+                    android:text="@string/email_profile"
                     android:textColor="@color/headings"
                     android:textSize="13sp" />
 
@@ -185,7 +191,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="joey@sharenofood.com"
+                    android:text="@string/unknown_scenario_com"
+                    android:id="@+id/tv_emailAddress"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -206,7 +213,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date of Birth"
+                    android:text="@string/date_of_birth"
                     android:textColor="@color/headings"
                     android:textSize="13sp" />
 
@@ -215,7 +222,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:textColor="#000000"
-                    android:text="16-04-1996"
+                    android:text="@string/_16_04_1996"
+                    android:id="@+id/tv_dob"
                     android:textSize="18sp" />
 
                 <View

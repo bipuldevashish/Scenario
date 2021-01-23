@@ -18,7 +18,11 @@
         android:id="@+id/profile"
         android:name="com.bipuldevashish.pro_x.ui.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile"/>
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/search"
         android:name="com.bipuldevashish.pro_x.ui.search.SearchFragment"
@@ -42,5 +46,14 @@
         <action
             android:id="@+id/action_singleImageFragment_to_home"
             app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.bipuldevashish.pro_x.ui.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_profile"
+            app:destination="@id/profile" />
     </fragment>
 </navigation>
