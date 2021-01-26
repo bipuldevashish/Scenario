@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
 
-interface ApiService {
+interface  ApiService {
 
     companion object {
         const val BASE_URL = "https://api.pexels.com/v1/"
@@ -29,7 +29,7 @@ interface ApiService {
         @Query("per_page") perPage: Int
     ): SearchImageItem
 
-    @Headers("Authorization: Your api key")
+    @Headers("Authorization: Your Api Key")
     @GET("search/")
     suspend fun getSearchReasults(
         @Query("query") query: String,

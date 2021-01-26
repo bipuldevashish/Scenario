@@ -15,6 +15,8 @@ import com.bipuldevashish.pro_x.databinding.FragmentProfileBinding
 import com.bipuldevashish.pro_x.ui.getStarted.GetStartedActivity
 import com.bipuldevashish.pro_x.ui.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 
@@ -23,6 +25,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private var mAuth: FirebaseAuth? = null
+    private lateinit var mDatabaseReference: DatabaseReference
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,7 +35,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         _binding = FragmentProfileBinding.bind(view)
         mAuth = FirebaseAuth.getInstance()
-
+        mDatabaseReference=
+            mAuth?.currentUser?.let {
+                FirebaseDatabase.getInstance().reference.child("Users").child(
+                    it.uid)
+            }!!
         setupViews()
 
     }
@@ -41,15 +48,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         if (mAuth?.currentUser?.email.toString() != null) {
             binding.tvEmailAddress.setText(mAuth?.currentUser?.email.toString())
-        }
-//        if (mAuth?.currentUser?.displayName.toString() != null) {
-//            binding.tvName.setText(mAuth?.currentUser?.displayName.toString())
-//        }
+       }
 
         settingsMenu.setOnClickListener{
             mAuth?.signOut()
             val intent = Intent(context, GetStartedActivity::class.java)
             startActivity(intent)
+            activity?.finish()
         }
 //        settingsMenu.setOnClickListener {
 //            fun showPopup(v: View?) {
