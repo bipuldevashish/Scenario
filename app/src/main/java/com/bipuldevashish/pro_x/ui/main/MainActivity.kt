@@ -3,7 +3,6 @@ package com.bipuldevashish.pro_x.ui.main
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -13,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -32,13 +32,14 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         val navView : BottomNavigationView = findViewById(R.id.nav_view)
         val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.home, R.id.search, R.id.profile
-            )
+                setOf(
+                        R.id.home, R.id.search, R.id.profile
+                )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
@@ -60,6 +61,6 @@ class MainActivity : AppCompatActivity() {
         val pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE)
         val edt = pref.edit()
         edt.putBoolean("activity_executed", false)
-        edt.commit()
+        edt.apply()
     }
 }

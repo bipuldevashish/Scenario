@@ -34,9 +34,6 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
 
         val binding = FragmentDetailedImageBinding.bind(view)
 
-        val scaleFactor = getScaleFactor(args.photo.height, UtilHelper.getScreenHeight())
-        Log.d(TAG, "onViewCreated: $scaleFactor")
-
         binding.apply {
             val photo = args.photo
 

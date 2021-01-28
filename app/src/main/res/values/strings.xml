@@ -45,12 +45,12 @@
     <string name="log_out">Log out</string>
     <string name="downloads">Downloads</string>
     <string name="_453k">453K</string>
-    <string name="unknown_user">Unknown User</string>
+    <string name="scenario_user">Scenario User</string>
     <string name="collection">Collection</string>
     <string name="favourites">Favourites</string>
     <string name="upload">Upload</string>
     <string name="new_york_usa">new york, usa</string>
-    <string name="unknown_scenario_com">unknown@scenario.com</string>
+    <string name="unknown_scenario_com">userscenario@scenario.com</string>
     <string name="date_of_birth">Date of Birth</string>
     <string name="_16_04_1996">16-04-1996</string>
     <string name="likes">likes</string>
@@ -58,5 +58,12 @@
     <string name="inflates_the_menu_item">Inflates the menu item</string>
     <string name="displays_user_image">Displays user image</string>
     <string name="email_profile">Email</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="login_get_started">LOGIN</string>
+    <string name="title">Title</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="place">Place</string>
+    <string name="update">Update</string>
+    <string name="number">89********</string>
 
 </resources>

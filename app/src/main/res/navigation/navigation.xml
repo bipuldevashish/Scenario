@@ -49,8 +49,8 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.bipuldevashish.pro_x.ui.EditProfileFragment"
-        android:label="fragment_edit_profile"
+        android:name="com.bipuldevashish.pro_x.ui.editProfile.EditProfileFragment"
+        android:label="Update Profile"
         tools:layout="@layout/fragment_edit_profile" >
         <action
             android:id="@+id/action_editProfileFragment_to_profile"

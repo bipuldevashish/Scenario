@@ -42,7 +42,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15sp"
             android:fontFamily="sans-serif-light"
-            android:text="@string/unknown_user"
+            android:text="@string/scenario_user"
             android:textColor="@color/white"
             android:textSize="32sp" />
 
@@ -63,11 +63,10 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginTop="15dp"
             android:adjustViewBounds="true"
             android:id="@+id/settingsMenu"
-            android:onClick="showPopup"
             android:scaleType="centerInside"
             android:clickable="true"
             android:src="@drawable/ic_settings"
@@ -105,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="@string/_453k"
-                    android:textColor="@color/pencil"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="25sp" />
 
                 <TextView
@@ -114,7 +113,7 @@
                     android:fontFamily="sans-serif-light"
                     android:text="@string/downloads"
                     android:textAllCaps="true"
-                    android:textColor="@color/pencil"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
             </LinearLayout>
@@ -126,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/pencil"
+            android:background="@color/colorPrimary"
             android:gravity="center"
             android:paddingBottom="5dp"
             android:paddingTop="5dp">
@@ -193,6 +192,35 @@
                     android:fontFamily="sans-serif-light"
                     android:text="@string/unknown_scenario_com"
                     android:id="@+id/tv_emailAddress"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/grey" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_number"
+                    android:textColor="@color/headings"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/number"
+                    android:id="@+id/tv_phoneNumber"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 

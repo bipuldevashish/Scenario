@@ -3,11 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="pencil">#4A6572</color>
-    <color name="pencilDark">#344955</color>
+    <color name="colorPrimary">#4A6572</color>
+    <color name="colorPrimaryDark">#344955</color>
     <color name="honey">#F9AA33</color>
-    <color name="pencilComplemtry">#72574a</color>
-    <color name="pencilComplementryDark">#80482E</color>
+    <color name="colorPrimaryComplementry">#72574a</color>
+    <color name="colorPrimaryComplementryDark">#80482E</color>
 
 
     <color name="address">#2F7092</color>

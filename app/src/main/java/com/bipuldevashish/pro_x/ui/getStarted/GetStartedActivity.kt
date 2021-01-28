@@ -1,8 +1,7 @@
 package com.bipuldevashish.pro_x.ui.getStarted
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bipuldevashish.pro_x.R
+import androidx.appcompat.app.AppCompatActivity
 import com.bipuldevashish.pro_x.databinding.ActivityGetStartedBinding
 
 class GetStartedActivity : AppCompatActivity() {

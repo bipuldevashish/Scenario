@@ -1,25 +1,25 @@
 package com.bipuldevashish.pro_x.ui.login
 
+import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import android.view.View
-import android.widget.Toast
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.databinding.FragmentLoginBinding
 import com.bipuldevashish.pro_x.ui.main.MainActivity
 import com.bipuldevashish.pro_x.utils.InputTypeEnum
-import com.bipuldevashish.pro_x.utils.Inputcheck
 import com.bipuldevashish.pro_x.utils.Inputcheck.isNullOrEmpty
 import com.bipuldevashish.pro_x.utils.Inputcheck.isPatternMatched
 import com.bipuldevashish.pro_x.utils.UtilHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
 
 

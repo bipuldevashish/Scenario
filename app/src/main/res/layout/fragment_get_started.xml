@@ -30,7 +30,6 @@
         android:textSize="42sp"
         app:layout_constraintBottom_toTopOf="@+id/line"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:layout_constraintVertical_bias="1.0" />
@@ -43,8 +42,8 @@
         android:src="@drawable/line"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/title" />
 
     <TextView
         android:id="@+id/textView2"
@@ -66,9 +65,9 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_login_shape"
         android:fontFamily="@font/open_sans_regular"
-        android:text="LOGIN"
+        android:text="@string/login_get_started"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/signupBtn"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.0"

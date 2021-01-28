@@ -22,14 +22,14 @@ interface ApiService {
 *
 * */
 
-    @Headers("Authorization: Your API key")
+    @Headers("Authorization: Your API KEY")
     @GET("curated/")
     suspend fun getImageResults(
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
     ): SearchImageItem
 
-    @Headers("Authorization: Your api key")
+    @Headers("Authorization: Your API KEY")
     @GET("search/")
     suspend fun getSearchReasults(
         @Query("query") query: String,
