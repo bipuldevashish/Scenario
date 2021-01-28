@@ -1,6 +1,7 @@
 package com.bipuldevashish.pro_x.ui.main
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -11,6 +12,8 @@ import com.bipuldevashish.pro_x.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         mAuth = FirebaseAuth.getInstance()
         supportActionBar?.elevation ?: 0
@@ -63,4 +67,5 @@ class MainActivity : AppCompatActivity() {
         edt.putBoolean("activity_executed", false)
         edt.apply()
     }
+
 }
