@@ -16,6 +16,7 @@ import com.bipuldevashish.pro_x.utils.InputTypeEnum
 import com.bipuldevashish.pro_x.utils.Inputcheck.areFieldsEqual
 import com.bipuldevashish.pro_x.utils.Inputcheck.isNullOrEmpty
 import com.bipuldevashish.pro_x.utils.Inputcheck.isPatternMatched
+import com.bipuldevashish.pro_x.utils.UtilHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
@@ -31,6 +32,7 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
     private val binding get() = _binding!!
     private var mAuth: FirebaseAuth? = null
     private lateinit var mDatabaseReference: DatabaseReference
+    private lateinit var progressDailog: ProgressDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,7 +42,6 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
         mDatabaseReference = FirebaseDatabase.getInstance().reference
 
         setupViews()
-
     }
 
     private fun setupViews() {
@@ -50,8 +51,13 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
         }
 
         binding.signupBtnRegister.setOnClickListener {
+            progressDailog = UtilHelper.showProgressDialog(activity, "Signing Up")!!
             if (inputCheck()) {
                 performSignUp()
+            }else{
+                if (progressDailog.isShowing){
+                    progressDailog.dismiss()
+                }
             }
         }
     }
@@ -77,8 +83,10 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
+                        if (progressDailog.isShowing) {
+                            progressDailog.dismiss()
+                        }
                     Log.d(ContentValues.TAG, "createUserWithEmail:success")
-
                     addDataToFirebase(etNameRegister.text.toString(), etEmailRegister.text.toString())
                     Toast.makeText(
                             context, "Sign up success.",
@@ -92,6 +100,9 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
 
                 } else {
                     // If sign in fails, display a message to the user.
+                        if (progressDailog.isShowing){
+                            progressDailog.dismiss()
+                        }
                     Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
                     Toast.makeText(
                             context, "Sign up failure.",

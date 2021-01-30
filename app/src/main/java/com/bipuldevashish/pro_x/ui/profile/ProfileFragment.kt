@@ -1,5 +1,6 @@
 package com.bipuldevashish.pro_x.ui.profile
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuInflater
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.databinding.FragmentProfileBinding
 import com.bipuldevashish.pro_x.ui.getStarted.GetStartedActivity
+import com.bipuldevashish.pro_x.utils.UtilHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -24,6 +26,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding get() = _binding!!
     private var mAuth: FirebaseAuth? = null
     private lateinit var mDatabaseReference: DatabaseReference
+    private lateinit var progressDailog : ProgressDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,7 +45,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun setupViews() {
 
-<<<<<<< HEAD
         binding.tvEmailAddress.text = mAuth?.currentUser?.email.toString()
 
         binding.settingsMenu.setOnClickListener {
@@ -51,39 +53,38 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             inflater.inflate(R.menu.settings_menu, popup.menu)
             popup.show()
             popup.setOnMenuItemClickListener {
-                     when (it.itemId) {
-                        R.id.editProfile -> {
-                            // do your code
-                            val action = ProfileFragmentDirections.actionProfileToEditProfileFragment()
-                            findNavController().navigate(action)
-                            true
-                        }
-                        R.id.logout -> {
-                            // do your code
-                            mAuth?.signOut()
-                            val intent = Intent(context, GetStartedActivity::class.java)
-                            startActivity(intent)
-                            activity?.finish()
-                            true
-                        }
-                        else -> false
+                when (it.itemId) {
+                    R.id.editProfile -> {
+                        // do your code
+                        val action = ProfileFragmentDirections.actionProfileToEditProfileFragment()
+                        findNavController().navigate(action)
+                        true
+                    }
+                    R.id.logout -> {
+                        // do your code
+                        progressDailog = UtilHelper.showProgressDialog(activity, "Signing Out")!!
+                        mAuth?.signOut()
+                        progressDailog.dismiss()
+                        val intent = Intent(context, GetStartedActivity::class.java)
+                        startActivity(intent)
+                        activity?.finish()
+                        true
+                    }
+                    else -> false
 
                 }
             }
-=======
-        if (mAuth?.currentUser?.email.toString() != null) {
-            binding.tvEmailAddress.setText(mAuth?.currentUser?.email.toString())
-       }
 
-        settingsMenu.setOnClickListener{
-            mAuth?.signOut()
-            val intent = Intent(context, GetStartedActivity::class.java)
-            startActivity(intent)
-            activity?.finish()
->>>>>>> origin/master
+            if (mAuth?.currentUser?.email.toString() != null) {
+                binding.tvEmailAddress.setText(mAuth?.currentUser?.email.toString())
+            }
+
+            settingsMenu.setOnClickListener {
+                mAuth?.signOut()
+                val intent = Intent(context, GetStartedActivity::class.java)
+                startActivity(intent)
+                activity?.finish()
+            }
         }
     }
-
-
-
 }
