@@ -14,7 +14,7 @@ class SearchViewModel @ViewModelInject constructor(
 
 
     companion object{
-        private const val DEFAULT_QUERY = "Trees"
+        private const val DEFAULT_QUERY = "Nature"
     }
 
     private val currentQuery = MutableLiveData(DEFAULT_QUERY)

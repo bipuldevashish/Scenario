@@ -4,7 +4,6 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
@@ -75,9 +74,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 }
             }
 
-            if (mAuth?.currentUser?.email.toString() != null) {
-                binding.tvEmailAddress.setText(mAuth?.currentUser?.email.toString())
-            }
+            binding.tvEmailAddress.text = mAuth?.currentUser?.email.toString()
 
             settingsMenu.setOnClickListener {
                 mAuth?.signOut()
