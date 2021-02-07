@@ -9,16 +9,15 @@
 
     <com.bipuldevashish.pro_x.utils.ZoomClass
         android:id="@+id/image_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:src="@drawable/grad" />
+        tools:src="@drawable/ic_launcher_background" />
 
     <ProgressBar
         android:id="@+id/progress_bar"

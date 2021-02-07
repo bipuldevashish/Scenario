@@ -1,3 +1,4 @@
+
 package com.bipuldevashish.pro_x.data.api
 
 import com.bipuldevashish.pro_x.data.models.ImageList
@@ -22,7 +23,7 @@ interface  ApiService {
 *
 * */
 
-    @Headers("Authorization: YOUR API KEY")
+    @Headers("Authorization: YOUR API KEY   ")
     @GET("curated/")
     suspend fun getImageResults(
         @Query("page") page: Int,

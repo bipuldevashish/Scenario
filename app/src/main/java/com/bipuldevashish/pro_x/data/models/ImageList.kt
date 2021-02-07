@@ -36,6 +36,7 @@ data class ImageList(
     @Parcelize
     data class Src(
         val medium: String,            // to store the medium size url which will be displayed in recycler view
-        val large2x: String            // to store the actual size url which will be displayed on full screen
+        val large2x: String,            // to store the actual size url which will be displayed on full screen
+        val portrait: String
     ) : Parcelable
 }
