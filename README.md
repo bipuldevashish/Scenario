@@ -18,7 +18,7 @@ Signup Screen
 
 Home Screen
 
-<img src="https://github.com/bipuldevashish/Scenario/blob/master/screenshots/Screenshot_20210124_203555.png.png" height="300">
+<img src="https://github.com/bipuldevashish/Scenario/blob/master/screenshots/Screenshot_20210124_203555.png" height="300">
 
 Search Screen
 <img src="https://github.com/bipuldevashish/Scenario/blob/master/screenshots/Screenshot_20210124_203604.png" height="300">
