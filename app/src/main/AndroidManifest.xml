@@ -20,7 +20,7 @@
         android:theme="@style/Theme.Pro_X">
         <activity
             android:name=".ui.getStarted.GetStartedActivity"
-            android:theme="@style/Apptheme.NoActionBar"></activity>
+            android:theme="@style/Apptheme.NoActionBar" />
         <activity
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/SplashTheme">

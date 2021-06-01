@@ -1,13 +1,25 @@
 package com.bipuldevashish.pro_x.ui.fullScreenImage
 
+import android.annotation.TargetApi
+import android.app.Activity
+import android.app.AlertDialog
+import android.app.DownloadManager
+import android.content.Context
+import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.drawable.Drawable
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.transition.Visibility
+import android.os.Environment
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -20,6 +32,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 
 
 class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
@@ -41,6 +54,10 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
 
         binding.apply {
             val photo = args.photo
+
+            downloadBtn.setOnClickListener{
+                askPermissions()
+            }
 
             Glide
                 .with(this@DetailedImageFragment)
@@ -74,6 +91,105 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
                 .into(imageView)
 
         }
+    }
+
+
+    private var msg: String? = ""
+    private var lastMsg = ""
+
+    fun downloadImage(url: String) {
+
+        val directory = File(Environment.DIRECTORY_PICTURES)
+        if (!directory.exists()){
+            directory.mkdirs()
+        }
+
+        val downloadManager = requireContext().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val downloadUri = Uri.parse(url)
+        val request = DownloadManager.Request(downloadUri).apply {
+            setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
+                .setAllowedOverRoaming(false)
+                .setTitle(url.substring(url.lastIndexOf("/") + 1))
+                .setDescription("")
+                .setDestinationInExternalPublicDir(
+                    directory.toString(),
+                    url.substring(url.lastIndexOf("/") + 1)
+                )
+        }
+
+        val downloadId = downloadManager.enqueue(request)
+        val query = DownloadManager.Query().setFilterById(downloadId)
+        Thread {
+            var downloading = true
+            while (downloading) {
+                val cursor: Cursor = downloadManager.query(query)
+                cursor.moveToFirst()
+                if (cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)) == DownloadManager.STATUS_SUCCESSFUL) {
+                    downloading = false
+                }
+                val status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
+                msg = statusMessage(url, directory, status)
+                if (msg != lastMsg) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+                    }
+                    lastMsg = msg ?: ""
+                }
+                cursor.close()
+            }
+        }.start()
+    }
+
+    private fun statusMessage(url: String, directory: File, status: Int): String {
+        var msg = ""
+        msg = when (status) {
+            DownloadManager.STATUS_FAILED -> "Download has been failed, please try again"
+            DownloadManager.STATUS_PAUSED -> "Download Paused"
+            DownloadManager.STATUS_PENDING -> "Download Pending"
+            DownloadManager.STATUS_RUNNING -> "Downloading..."
+            DownloadManager.STATUS_SUCCESSFUL -> "Downloaded Successfully" + File.separator + url.substring(
+                url.lastIndexOf("/") + 1
+            )else ->
+                "There's nothing to download"
+        }
+        return msg
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    fun askPermissions(){
+        if (ContextCompat.checkSelfPermission(requireContext(),
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Permission Required")
+                    .setMessage("Permission required to save the photo to phone memory")
+                    .setPositiveButton("Accept") {
+                            dialog, id ->
+                        ActivityCompat.requestPermissions(
+                            requireContext() as Activity,
+                            arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                            MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE)
+                        Toast.makeText(requireContext(), "Permission Granted You can download now", Toast.LENGTH_LONG).show()
+                        requireActivity().finish()
+                    }
+                    .setNegativeButton("Deny") {
+                            dailog, id -> dailog.cancel()
+                    }.show()
+            }
+            else {
+                ActivityCompat.requestPermissions(requireContext() as Activity,
+                    arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE)
+            }
+        }
+        else {
+            val photoUrl = args.photo
+            downloadImage(photoUrl.src.large2x)
+        }
+    }
+    companion object{
+        private const val MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1
     }
 
     override fun onDetach() {
