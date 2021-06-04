@@ -1,6 +1,7 @@
 package com.bipuldevashish.pro_x.data.paging
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.bipuldevashish.pro_x.data.api.ApiService
 import com.bipuldevashish.pro_x.data.models.ImageList
 import retrofit2.HttpException
@@ -28,6 +29,10 @@ class PagingSourceCurated (
         } catch (exception: HttpException) {
             LoadResult.Error(exception)
         }
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, ImageList.Photos>): Int? {
+        TODO("Not yet implemented")
     }
 
 }

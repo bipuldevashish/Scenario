@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.databinding.FragmentDetailedImageBinding
+import com.bipuldevashish.pro_x.utils.UtilHelper
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -55,31 +56,32 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
         binding.apply {
             val photo = args.photo
 
-            downloadBtn.setOnClickListener{
+            downloadBtn.setOnClickListener {
                 askPermissions()
             }
 
             Glide
                 .with(this@DetailedImageFragment)
                 .load(photo.src.large2x)
+                .centerCrop()
                 .error(R.drawable.ic_round_erro_24)
                 .listener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(
-                            e: GlideException?,
-                            model: Any?,
-                            target: Target<Drawable>?,
-                            isFirstResource: Boolean
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
                     ): Boolean {
                         progressBar.isVisible = false
                         return false
                     }
 
                     override fun onResourceReady(
-                            resource: Drawable?,
-                            model: Any?,
-                            target: Target<Drawable>?,
-                            dataSource: DataSource?,
-                            isFirstResource: Boolean
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
                     ): Boolean {
                         progressBar.isVisible = false
                         return false
@@ -97,14 +99,15 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
     private var msg: String? = ""
     private var lastMsg = ""
 
-    fun downloadImage(url: String) {
+    private fun downloadImage(url: String) {
 
         val directory = File(Environment.DIRECTORY_PICTURES)
-        if (!directory.exists()){
+        if (!directory.exists()) {
             directory.mkdirs()
         }
 
-        val downloadManager = requireContext().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val downloadManager =
+            requireContext().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val downloadUri = Uri.parse(url)
         val request = DownloadManager.Request(downloadUri).apply {
             setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
@@ -149,46 +152,58 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
             DownloadManager.STATUS_RUNNING -> "Downloading..."
             DownloadManager.STATUS_SUCCESSFUL -> "Downloaded Successfully" + File.separator + url.substring(
                 url.lastIndexOf("/") + 1
-            )else ->
+            )
+            else ->
                 "There's nothing to download"
         }
         return msg
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    fun askPermissions(){
-        if (ContextCompat.checkSelfPermission(requireContext(),
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
-                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+    fun askPermissions() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    requireActivity(),
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                )
+            ) {
                 AlertDialog.Builder(requireContext())
                     .setTitle("Permission Required")
                     .setMessage("Permission required to save the photo to phone memory")
-                    .setPositiveButton("Accept") {
-                            dialog, id ->
+                    .setPositiveButton("Accept") { dialog, id ->
                         ActivityCompat.requestPermissions(
                             requireContext() as Activity,
                             arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                            MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE)
-                        Toast.makeText(requireContext(), "Permission Granted You can download now", Toast.LENGTH_LONG).show()
+                            MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE
+                        )
+                        Toast.makeText(
+                            requireContext(),
+                            "Permission Granted You can download now",
+                            Toast.LENGTH_LONG
+                        ).show()
                         requireActivity().finish()
                     }
-                    .setNegativeButton("Deny") {
-                            dailog, id -> dailog.cancel()
+                    .setNegativeButton("Deny") { dailog, id ->
+                        dailog.cancel()
                     }.show()
-            }
-            else {
-                ActivityCompat.requestPermissions(requireContext() as Activity,
+            } else {
+                ActivityCompat.requestPermissions(
+                    requireContext() as Activity,
                     arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                    MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE)
+                    MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE
+                )
             }
-        }
-        else {
+        } else {
             val photoUrl = args.photo
             downloadImage(photoUrl.src.large2x)
         }
     }
-    companion object{
+
+    companion object {
         private const val MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1
     }
 
