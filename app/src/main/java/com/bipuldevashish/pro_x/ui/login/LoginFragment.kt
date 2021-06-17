@@ -17,7 +17,6 @@ import com.bipuldevashish.pro_x.utils.Inputcheck.isPatternMatched
 import com.bipuldevashish.pro_x.utils.UtilHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import kotlinx.android.synthetic.main.fragment_login.*
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -59,7 +58,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         val progressDialog = ProgressDialog(activity)
 
-        mAuth?.signInWithEmailAndPassword(etEmail.text.toString(), etPassword.text.toString())
+        mAuth?.signInWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
@@ -87,7 +86,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun inputCheck(): Boolean {
-            if (isNullOrEmpty(etEmail) && isPatternMatched(InputTypeEnum.EMAIL_ADDRESS, etEmail) && isNullOrEmpty(etPassword)){
+            if (isNullOrEmpty(binding.etEmail) && isPatternMatched(InputTypeEnum.EMAIL_ADDRESS, binding.etEmail) && isNullOrEmpty(binding.etPassword)){
                 return true
             }
         return false

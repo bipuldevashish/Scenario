@@ -21,12 +21,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.fragment_signup.*
 
 
-private const val TAG = "SignUpFragment"
 
 class SignUpFragment : Fragment(R.layout.fragment_signup) {
+
+    private val TAG = "SignUpFragment"
 
     private var _binding: FragmentSignupBinding? = null
     private val binding get() = _binding!!
@@ -63,12 +63,12 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
     }
 
     private fun inputCheck(): Boolean {
-        if (isNullOrEmpty(etNameRegister) && isNullOrEmpty(etEmailRegister) && isPatternMatched(
+        if (isNullOrEmpty(binding.etNameRegister) && isNullOrEmpty(binding.etEmailRegister) && isPatternMatched(
                         InputTypeEnum.EMAIL_ADDRESS,
-                        etEmailRegister
-                ) && isNullOrEmpty(etPasswordRegister) &&  isNullOrEmpty(
-                        etConfirmPasswordRegister
-                ) && areFieldsEqual(etPasswordRegister, etConfirmPasswordRegister)) {
+                        binding.etEmailRegister
+                ) && isNullOrEmpty(binding.etPasswordRegister) &&  isNullOrEmpty(
+                        binding.etConfirmPasswordRegister
+                ) && areFieldsEqual(binding.etPasswordRegister, binding.etConfirmPasswordRegister)) {
             Log.d(TAG, "inputCheck: condition passed")
             return true
         }
@@ -77,8 +77,8 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
 
     private fun performSignUp() {
         mAuth?.createUserWithEmailAndPassword(
-                etEmailRegister.text.toString(),
-                etPasswordRegister.text.toString()
+                binding.etEmailRegister.text.toString(),
+                binding.etPasswordRegister.text.toString()
         )
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -87,7 +87,7 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
                             progressDailog.dismiss()
                         }
                     Log.d(ContentValues.TAG, "createUserWithEmail:success")
-                    addDataToFirebase(etNameRegister.text.toString(), etEmailRegister.text.toString())
+                    addDataToFirebase(binding.etNameRegister.text.toString(), binding.etEmailRegister.text.toString())
                     Toast.makeText(
                             context, "Sign up success.",
                             Toast.LENGTH_SHORT
@@ -121,7 +121,7 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
         userData["D_O_B"] = ""
         userData["Place"] = ""
 
-        mAuth?.currentUser?.let { mDatabaseReference?.child("Users")?.child(it.uid) }?.setValue(userData)
+        mAuth?.currentUser?.let { mDatabaseReference.child("Users").child(it.uid) }?.setValue(userData)
 
     }
 

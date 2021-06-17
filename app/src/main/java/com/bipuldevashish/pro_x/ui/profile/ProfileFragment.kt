@@ -16,7 +16,6 @@ import com.bipuldevashish.pro_x.utils.UtilHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.fragment_profile.*
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -47,7 +46,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.tvEmailAddress.text = mAuth?.currentUser?.email.toString()
 
         binding.settingsMenu.setOnClickListener {
-            val popup = PopupMenu(context, settingsMenu)
+            val popup = PopupMenu(context, binding.settingsMenu)
             val inflater: MenuInflater = popup.menuInflater
             inflater.inflate(R.menu.settings_menu, popup.menu)
             popup.show()
@@ -76,7 +75,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             binding.tvEmailAddress.text = mAuth?.currentUser?.email.toString()
 
-            settingsMenu.setOnClickListener {
+            binding.settingsMenu.setOnClickListener {
                 mAuth?.signOut()
                 val intent = Intent(context, GetStartedActivity::class.java)
                 startActivity(intent)

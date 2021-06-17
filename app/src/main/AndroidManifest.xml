@@ -12,7 +12,6 @@
 
     <application
         android:name=".App"
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -20,7 +19,9 @@
         android:theme="@style/Theme.Pro_X">
         <activity
             android:name=".ui.getStarted.GetStartedActivity"
-            android:theme="@style/Apptheme.NoActionBar" />
+            android:theme="@style/Apptheme.NoActionBar">
+
+        </activity>
         <activity
             android:name=".ui.splash.SplashActivity"
             android:theme="@style/SplashTheme">

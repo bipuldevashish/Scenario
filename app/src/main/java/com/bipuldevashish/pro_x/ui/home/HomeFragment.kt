@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bipuldevashish.pro_x.R
@@ -35,7 +35,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),HomeImageAdapter.OnitemCli
             layoutManager = GridLayoutManager(context, 3)
         }
 
-        viewModel = ViewModelProviders.of(requireActivity()).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
         viewModel!!.photos.observe(viewLifecycleOwner) {
             homeImageAdapter.submitData(viewLifecycleOwner.lifecycle, it)
         }

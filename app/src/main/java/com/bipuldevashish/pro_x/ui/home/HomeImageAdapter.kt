@@ -1,6 +1,5 @@
 package com.bipuldevashish.pro_x.ui.home
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -11,8 +10,6 @@ import com.bipuldevashish.pro_x.data.models.ImageList
 import com.bipuldevashish.pro_x.databinding.ImageItemRvBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-
-private const val TAG = "HomeImageAdapter"
 
 class HomeImageAdapter(private val listner: OnitemClickListner) :
     PagingDataAdapter<ImageList.Photos, HomeImageAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
@@ -64,7 +61,6 @@ class HomeImageAdapter(private val listner: OnitemClickListner) :
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val currentItem = getItem(position)
-        Log.d(TAG, "onBindViewHolder: ${currentItem?.src?.medium}")
         if (currentItem != null) {
             holder.bind(currentItem)
         }

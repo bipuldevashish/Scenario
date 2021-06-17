@@ -2,8 +2,7 @@ package com.bipuldevashish.pro_x.data.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.Parcelize
 
 /*
 *
@@ -16,9 +15,9 @@ import kotlinx.android.parcel.RawValue
 @Parcelize
 data class ImageList(
     val page: Int,                  //   shows the current page number
-    val per_page : Int,             //    shows the number of photos returned with each page
+    val per_page: Int,             //    shows the number of photos returned with each page
     val total_results: Int,          //   shows total images including all pages
-    val photos: @RawValue List<Photos>    //   to store the actual image list
+    val photos: List<Photos>    //   to store the actual image list
 ) : Parcelable {
 
     @Parcelize

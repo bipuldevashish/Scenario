@@ -12,7 +12,6 @@ import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.data.models.ImageList
 import com.bipuldevashish.pro_x.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_search.*
 
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search), SearchImageAdapter.OnitemClickListner {
@@ -32,7 +31,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchImageAdapter.On
 
         val searchAdapter = SearchImageAdapter(this)
 
-        binding.editTextSearch.setOnEditorActionListener { v, actionId, event ->
+        binding.editTextSearch.setOnEditorActionListener { _, actionId, _ ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
                     getStringFromEditText()
@@ -53,7 +52,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchImageAdapter.On
         }
     }
 
-    fun getStringFromEditText() {
+    private fun getStringFromEditText() {
         binding.editTextSearch.text.trim().let {
             if (it.isNotEmpty()) {
                 binding.recyclerViewSearchFragment.scrollToPosition(0)
