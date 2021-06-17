@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bipuldevashish.pro_x.R
-import com.bipuldevashish.pro_x.data.models.ImageList
+import com.bipuldevashish.pro_x.data.models.Photos
 import com.bipuldevashish.pro_x.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -66,7 +66,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), SearchImageAdapter.On
         _binding = null
     }
 
-    override fun onItemClick(photo: ImageList.Photos) {
+    override fun onItemClick(photo: Photos) {
             val action = SearchFragmentDirections.actionSearchToSingleImageFragment3(photo)
             findNavController().navigate(action)
     }

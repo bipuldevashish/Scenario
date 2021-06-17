@@ -43,7 +43,7 @@
         tools:layout="@layout/fragment_detailed_image">
         <argument
             android:name="photo"
-            app:argType="com.bipuldevashish.pro_x.data.models.ImageList$Photos" />
+            app:argType="com.bipuldevashish.pro_x.data.models.Photos" />
         <action
             android:id="@+id/action_singleImageFragment_to_search2"
             app:destination="@id/search" />

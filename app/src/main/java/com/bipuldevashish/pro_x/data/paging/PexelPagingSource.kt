@@ -3,18 +3,19 @@ package com.bipuldevashish.pro_x.data.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.bipuldevashish.pro_x.data.api.ApiService
-import com.bipuldevashish.pro_x.data.models.ImageList
+import com.bipuldevashish.pro_x.data.models.Photos
 import retrofit2.HttpException
 import java.io.IOException
 
-private const val PEXEL_STARTING_PAGE_INDEX = 1
 
 class PexelPagingSource (
         private val apiService: ApiService,
         private val query: String
-        ) : PagingSource<Int, ImageList.Photos>() {
+        ) : PagingSource<Int, Photos>() {
 
-        override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ImageList.Photos > {
+
+
+        override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photos > {
                 val position = params.key ?: PEXEL_STARTING_PAGE_INDEX
                 return try {
                 val response  = apiService.getSearchReasults(query, position, params.loadSize)
@@ -32,8 +33,13 @@ class PexelPagingSource (
                 }
         }
 
-        override fun getRefreshKey(state: PagingState<Int, ImageList.Photos>): Int? {
+        override fun getRefreshKey(state: PagingState<Int, Photos>): Int? {
                 TODO("Not yet implemented")
+        }
+
+        companion object{
+                const val PEXEL_STARTING_PAGE_INDEX = 1
+
         }
 
 }

@@ -25,7 +25,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.databinding.FragmentDetailedImageBinding
-import com.bipuldevashish.pro_x.utils.UtilHelper
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -38,7 +37,6 @@ import java.io.File
 class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
 
 
-    private val TAG = "DetailedImageFragment"
     private val args by navArgs<DetailedImageFragmentArgs>()
 
 
@@ -84,13 +82,8 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
                     ): Boolean {
                         progressBar.isVisible = false
                         return false
-
                     }
-
-                })
-
-                .into(imageView)
-
+                }).into(imageView)
         }
     }
 
@@ -130,7 +123,7 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
                     downloading = false
                 }
                 val status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
-                msg = statusMessage(url, directory, status)
+                msg = statusMessage(url, status)
                 if (msg != lastMsg) {
                     requireActivity().runOnUiThread {
                         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
@@ -142,7 +135,7 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
         }.start()
     }
 
-    private fun statusMessage(url: String, directory: File, status: Int): String {
+    private fun statusMessage(url: String, status: Int): String {
         var msg = ""
         msg = when (status) {
             DownloadManager.STATUS_FAILED -> "Download has been failed, please try again"

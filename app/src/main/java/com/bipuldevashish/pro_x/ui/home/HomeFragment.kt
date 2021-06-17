@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bipuldevashish.pro_x.R
-import com.bipuldevashish.pro_x.data.models.ImageList
+import com.bipuldevashish.pro_x.data.models.Photos
 import com.bipuldevashish.pro_x.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(R.layout.fragment_home),HomeImageAdapter.OnitemClickListner {
@@ -47,7 +47,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),HomeImageAdapter.OnitemCli
         _binding = null
     }
 
-    override fun onItemClick(photo: ImageList.Photos) {
+    override fun onItemClick(photo: Photos) {
         val action = HomeFragmentDirections.actionHomeToSingleImageFragment(photo)
         findNavController().navigate(action)
     }

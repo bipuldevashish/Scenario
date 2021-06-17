@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bipuldevashish.pro_x.R
 import com.bipuldevashish.pro_x.data.models.ImageList
+import com.bipuldevashish.pro_x.data.models.Photos
 import com.bipuldevashish.pro_x.databinding.ImageItemRvBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 class HomeImageAdapter(private val listner: OnitemClickListner) :
-    PagingDataAdapter<ImageList.Photos, HomeImageAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
+    PagingDataAdapter<Photos, HomeImageAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
 
     inner class PhotoViewHolder(private val binding: ImageItemRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -29,7 +30,7 @@ class HomeImageAdapter(private val listner: OnitemClickListner) :
             }
         }
 
-        fun bind(photo: ImageList.Photos) {
+        fun bind(photo: Photos) {
             binding.apply {
                 Glide.with(itemView)
                         .load(photo.src.medium)
@@ -43,16 +44,16 @@ class HomeImageAdapter(private val listner: OnitemClickListner) :
 
 
     companion object {
-        private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<ImageList.Photos>() {
+        private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<Photos>() {
             override fun areItemsTheSame(
-                oldItem: ImageList.Photos,
-                newItem: ImageList.Photos
+                oldItem: Photos,
+                newItem: Photos
             ) =
                 oldItem.id == newItem.id
 
             override fun areContentsTheSame(
-                oldItem: ImageList.Photos,
-                newItem: ImageList.Photos
+                oldItem: Photos,
+                newItem: Photos
             ) =
                 oldItem == newItem
 
@@ -72,7 +73,7 @@ class HomeImageAdapter(private val listner: OnitemClickListner) :
     }
 
     interface OnitemClickListner {
-        fun onItemClick(photo: ImageList.Photos)
+        fun onItemClick(photo: Photos)
     }
 
 }

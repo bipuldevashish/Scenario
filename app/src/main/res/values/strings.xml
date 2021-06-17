@@ -65,5 +65,8 @@
     <string name="place">Place</string>
     <string name="update">Update</string>
     <string name="number">89********</string>
+    <string name="set_wallpaper_button">Set Wallpaper button</string>
+    <string name="close_image">Close Image</string>
+    <string name="download_image_button">Download Image Button</string>
 
 </resources>
