@@ -4,6 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_home">Home</string>
     <string name="menu_profile">Profile</string>
+    <string name="menu_automate">Automate</string>
     <string name="api_key">563492ad6f917000010000018bc38c66a1bc4522bbe044d69a19e744</string>
     <string name="menu_search">Search</string>
     <string name="search_here">Search By Category</string>
@@ -68,5 +69,6 @@
     <string name="set_wallpaper_button">Set Wallpaper button</string>
     <string name="close_image">Close Image</string>
     <string name="download_image_button">Download Image Button</string>
+    <string name="automate_wallpaper">Automate Wallpaper</string>
 
 </resources>

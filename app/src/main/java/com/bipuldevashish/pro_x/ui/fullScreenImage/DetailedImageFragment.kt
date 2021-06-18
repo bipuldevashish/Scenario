@@ -43,8 +43,8 @@ class DetailedImageFragment : Fragment(R.layout.fragment_detailed_image) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+        //activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        //(activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
         navBar.visibility = INVISIBLE
 

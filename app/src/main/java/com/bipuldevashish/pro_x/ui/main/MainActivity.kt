@@ -1,7 +1,6 @@
 package com.bipuldevashish.pro_x.ui.main
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -12,8 +11,6 @@ import com.bipuldevashish.pro_x.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -21,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 
-    private val TAG = "HomeActivity"
     private var mAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         val navView : BottomNavigationView = findViewById(R.id.nav_view)
         val appBarConfiguration = AppBarConfiguration(
                 setOf(
-                        R.id.home, R.id.search, R.id.profile
+                        R.id.home, R.id.search, R.id.profile, R.id.automate
                 )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

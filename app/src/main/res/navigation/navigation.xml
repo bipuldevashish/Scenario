@@ -60,4 +60,9 @@
             android:id="@+id/action_editProfileFragment_to_profile"
             app:destination="@id/profile" />
     </fragment>
+    <fragment
+        android:id="@+id/automate"
+        android:name="com.bipuldevashish.pro_x.ui.automate.Automate"
+        android:label="fragment_automate"
+        tools:layout="@layout/fragment_automate" />
 </navigation>
